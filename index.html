@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+ 
+<html id="top" lang="de-AT">
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta name="author" content="Arbeitskreis Vorratsdaten Österreich" />
+		<meta name="description" content="Kein neuer Inlandsgeheimdienst in Österreich!" />
+		<link rel="stylesheet" type="text/css" href="./css/bootstrap-3.3.6.min.css" />
+		<link rel="stylesheet" type="text/css" href="./css/style.css" />
+        <link rel="stylesheet" type="text/css" href="./css/table.css" />
+		<link rel="icon" href="./favicon.ico" />
+		<script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="./js/bootstrap-3.3.6.min.js"></script>
+		<script type="text/javascript" src="./js/init.js"></script>
+		<title></title>
+	</head>
+
+	<body>
+	
+		<header class="fluid-container">
+            <h1>Kontaktiere Deine Abgeordneten</h1>
+            <img src="./img/staatsschutz.png" alt="Staatsschutz Logo" />
+            <a href="https://www.akvorrat.at/"><img src="./img/akvorrat.png" alt="AKVorrat Logo" class="hidden-xs hidden-sm" /></a>
+    
+		</header>
+	
+		<main class="container">
+		
+			<section class="contactBox">
+                <!-- Nav tabs -->
+                <ul class="nav nav-pills nav-justified" role="tablist">
+                    <li role="presentation" id="spoeTab" class="active"><a href="#spoe" aria-controls="spoe" role="tab" data-toggle="tab">SP&Ouml;</a></li>
+                    <li role="presentation" id="oevpTab"><a href="#oevp" aria-controls="oevp" role="tab" data-toggle="tab">&Ouml;VP</a></li>
+                    <li role="presentation" id="fpoeTab"><a href="#fpoe" aria-controls="fpoe" role="tab" data-toggle="tab">FP&Ouml;</a></li>
+                    <li role="presentation" id="grueneTab"><a href="#gruene" aria-controls="gruene" role="tab" data-toggle="tab">GR&Uuml;NE</a></li>
+                    <li role="presentation" id="frankTab"><a href="#frank" aria-controls="frank" role="tab" data-toggle="tab">FRANK</a></li>
+                    <li role="presentation" id="neosTab"><a href="#neos" aria-controls="neos" role="tab" data-toggle="tab">NEOS</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active table-responsive" id="spoe">
+                        <table class="table table-hover table-condensed">
+                            <caption class="text-center">Sozialdemokratische Partei &Ouml;sterreichs</caption>
+                            <tbody id="spoeTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade table-responsive" id="oevp">
+                        <table class="table table-hover table-condensed">
+                            <caption class="text-center">&Ouml;sterreichische Volkspartei</caption>
+                            <tbody id="oevpTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade table-responsive" id="fpoe">
+                        <table class="table table-hover table-condensed">
+                            <caption class="text-center">Freiheitliche Partei &Ouml;sterreichs</caption>
+                            <tbody id="fpoeTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade table-responsive" id="gruene">
+                        <table class="table table-hover table-condensed">
+                            <caption class="text-center">Die Gr&uuml;ne Alternative</caption>
+                            <tbody id="grueneTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade table-responsive" id="frank">
+                        <table class="table table-hover table-condensed">
+                            <caption class="text-center">Team Stronach f&uuml;r &Ouml;sterreich</caption>
+                            <tbody id="frankTable">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div role="tabpanel" class="tab-pane fade table-responsive" id="neos">
+                        <table class="table table-hover table-condensed">
+                            <caption class="text-center">Das Neue &Ouml;sterreich und Liberales Forum</caption>
+                            <tbody id="neosTable">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+			</section>
+			
+		</main>
+		
+		<footer class="fluid-container">
+        <p>Diese Kampagne wird unterst&uuml;tzt von</p>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-6 col-md-3"><a href="https://akvorrat.at/"><img src="./img/logo/akv.jpg" alt="AKVorrat Logo" /></a></div>
+                <div class="col-xs-6 col-md-3"><a href="https://amnesty.at/"><img src="./img/logo/amnesty.jpg" alt="Amnesty International Österreich Logo" /></a></div>
+                <div class="col-xs-6 col-md-3"><a href="https://attac.at/"><img src="./img/logo/attac.jpg" alt="ATTAC Österreich Logo" /></a></div>
+                <div class="col-xs-6 col-md-3"><a href="https://vgt.at/"><img src="./img/logo/vgt.jpg" alt="VGT Logo" /></a></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-3"><a href="https://www.oeh.ac.at/"><img src="./img/logo/oeh.jpg" alt="Oesterreichische Hochschueler_innenschaft Logo" /></a></div>
+                <div class="col-xs-6 col-md-3"><a href="https://www.mehr-demokratie.at/"><img src="./img/logo/mehrdemokratie.jpg" alt="Mehrdemokratie Logo" /></a></div>
+                <div class="col-xs-6 col-md-3"><a href="http://www.zara.or.at/"><img src="./img/logo/zara.jpg" alt="Zara Logo" /></a></div>
+                <div class="col-xs-6 col-md-3"><a href="http://www.informationsfreiheit.at/"><img src="./img/logo/foruminformationsfreiheit.jpg" alt="Forum Informationsfreiheit Logo" /></a></div>
+            </div>
+        </div>
+        <p><a href="https://akvorrat.at/kontakt">Kontaktieren Sie uns, wenn Ihre Organisation staatsschutz.at auch unterst&uuml;tzen m&ouml;chte.</a></p>
+		</footer>
+		
+	</body>
+
+</html> 
