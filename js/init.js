@@ -1,76 +1,54 @@
-var firstnames = [], lastnames = [], titles = [], parties = [], mails = [], twitters = [], facebooks = [];
-var spoeTable, oevpTable, fpoeTable, grueneTable, frankTable, neosTable;
+var spoeTable, oevpTable, fpoeTable, grueneTable, neosTable, frankTable;
 var mail, twitter, facebook;
-var xmlRepresentatives = "./data/representatives.xml";
-var xmlFormat = "./data/format.xml";
+var xmlRepresentatives = "./data/representatives.json";
+var xmlFormat = "./data/format.json";
 
 $(document).ready(function () {
     findTables();
-    requestXML(xmlFormat, function (xhttp) {
-        var format = loadXML(xhttp);
+    requestJSON(xmlFormat, function (format) {
+        format = format.entries;
         setFormat(format);
     });
-    requestXML(xmlRepresentatives, function (xhttp) {
-        var representatives = loadXML(xhttp);
+    requestJSON(xmlRepresentatives, function (representatives) {
+        representatives = representatives.entries;
         setTables(representatives);
     });
 });
+
+function requestJSON(file, task) {
+    return $.getJSON(file, task);
+}
 
 function findTables() {
     spoeTable = $("#spoeTable");
     oevpTable = $("#oevpTable");
     fpoeTable = $("#fpoeTable");
     grueneTable = $("#grueneTable");
-    frankTable = $("#frankTable");
     neosTable = $("#neosTable");
+    frankTable = $("#frankTable");
 }
 
-function requestXML(file, task) {
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (xhttp.readyState === 4 && xhttp.status === 200)
-            task(xhttp);
-    };
-    xhttp.open("GET", file, true);
-    xhttp.send();
-}
-
-function loadXML(xml) {
-    var i, entries, xmlDoc, xmlArray = [];
-    xmlDoc = xml.responseXML;
-    entries = xmlDoc.activeElement.children;
-    for (i = 0; i < entries.length; i++) {
-        var children = entries[i].children, entry = {}, j;
-        for (j = 0; j < children.length; j++) {
-            entry[children[j].nodeName] = children[j].innerHTML;
-        }
-        xmlArray = xmlArray.concat([entry]);
-    }
-    return xmlArray;
-}
-
-function setFormat(nodeArray) {
-    mail = nodeArray[0];
-    twitter = nodeArray[1];
-    facebook = nodeArray[2];
+function setFormat(format) {
+    mail = format[0];
+    twitter = format[1];
+    facebook = format[2];
 }
 
 function setTables(representatives) {
-    var i;
-    for (i = 0; i < representatives.length; i++) {
-        if (representatives[i].party === "SPÖ")
-            assignRepresentative(representatives[i], spoeTable);
-        else if (representatives[i].party === "ÖVP")
-            assignRepresentative(representatives[i], oevpTable);
-        else if (representatives[i].party === "FPÖ")
-            assignRepresentative(representatives[i], fpoeTable);
-        else if (representatives[i].party === "GRÜNE")
-            assignRepresentative(representatives[i], grueneTable);
-        else if (representatives[i].party === "STRONACH")
-            assignRepresentative(representatives[i], frankTable);
-        else if (representatives[i].party === "NEOS")
-            assignRepresentative(representatives[i], neosTable);
-    }
+    $.each(representatives, function(arrayID, representative) {
+        if (representative.party === "SPÖ")
+            assignRepresentative(representative, spoeTable);
+        else if (representative.party === "ÖVP")
+            assignRepresentative(representative, oevpTable);
+        else if (representative.party === "FPÖ")
+            assignRepresentative(representative, fpoeTable);
+        else if (representative.party === "GRÜNE")
+            assignRepresentative(representative, grueneTable);
+        else if (representative.party === "NEOS")
+            assignRepresentative(representative, neosTable);
+        else if (representative.party === "STRONACH")
+            assignRepresentative(representative, frankTable);
+    });
 }
 
 function assignRepresentative(representative, table) {
@@ -83,7 +61,7 @@ function assignRepresentative(representative, table) {
         
         url = representative.mail;
         subject = mail.subject;
-        if (representative.gender === "masculin")
+        if (representative.gender === "male")
             salutation = mail.salutationM;
         else
             salutation = mail.salutationF;
