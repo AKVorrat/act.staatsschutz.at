@@ -29,9 +29,9 @@ function findTables() {
 }
 
 function setFormat(format) {
-    mail = format[0];
-    twitter = format[1];
-    facebook = format[2];
+    mail = format["mail"];
+    twitter = format["twitter"];
+    facebook = format["facebook"];
 }
 
 function setTables(representatives) {
@@ -69,9 +69,9 @@ function assignRepresentative(representative, table) {
         message = salutation + "%0D%0A" + mail.message;
         
         var formattedURL = mail.url.replace("%MAIL%", url).replace("%SUBJECT%", subject).replace("%MESSAGE%", message);
-        newMail = $("<th class='contactIcon'></th>").html("<a href='" + formattedURL + "'><img src='./img/share/mail.png' alt='" + "Contact via " + mail.name + "' /></a>");
+        newMail = $("<th class='contactIcon'></th>").html("<a href='" + formattedURL + "'><img src='./img/share/mail.gif' alt='" + "Contact via " + mail.name + "' /></a>");
     } else
-        newMail = $("<th class='contactIcon'></th>").html("<img src='./img/share/mail-disabled.png' />");
+        newMail = $("<th class='contactIcon'></th>").html("<img src='./img/share/mail-disabled.gif' />");
     
     if (representative.twitter != "") {
         var url, salutation, message;
@@ -85,9 +85,9 @@ function assignRepresentative(representative, table) {
         message = salutation + " " + twitter.message;
         
         var formattedURL = twitter.url.replace("%TWITTER%", url).replace("%MESSAGE%", message);
-        newTwitter = $("<th class='contactIcon'></th>").html("<a href='" + formattedURL + "'><img src='./img/share/twitter.png' alt='" + "Contact via " + twitter.name + "' /></a>");
+        newTwitter = $("<th class='contactIcon'></th>").html("<a href='" + formattedURL + "'><img src='./img/share/twitter.gif' alt='" + "Contact via " + twitter.name + "' /></a>");
     } else
-        newTwitter = $("<th class='contactIcon'></th>").html("<img src='./img/share/twitter-disabled.png' />");
+        newTwitter = $("<th class='contactIcon'></th>").html("<img src='./img/share/twitter-disabled.gif' />");
     
     if (representative.facebook != "") {
         var url, salutation, message;
@@ -101,9 +101,9 @@ function assignRepresentative(representative, table) {
         message = salutation + " " + facebook.message;
         
         var formattedURL = facebook.url.replace("%FACEBOOK%", url).replace("%MESSAGE%", message);
-        newFacebook = $("<th class='contactIcon'></th>").html("<a href='" + formattedURL + "'><img src='./img/share/facebook.png' alt='" + "Contact via " + facebook.name + "' /></a>");
+        newFacebook = $("<th class='contactIcon'></th>").html("<a href='" + formattedURL + "'><img src='./img/share/facebook.gif' alt='" + "Contact via " + facebook.name + "' /></a>");
     } else
-        newFacebook = $("<th class='contactIcon'></th>").html("<img src='./img/share/facebook-disabled.png' />");
+        newFacebook = $("<th class='contactIcon'></th>").html("<img src='./img/share/facebook-disabled.gif' />");
     
     newTR = $("<tr></tr>").append(newName).append(newMail).append(newTwitter).append(newFacebook);
     table.append(newTR);

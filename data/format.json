@@ -1,5 +1,5 @@
-{"entries": [
-  {
+{"entries": {
+  "mail": {
     "name": "E-Mail",
     "url": "mailto:%MAIL%?subject=%SUBJECT%&body=%MESSAGE%",
     "subject": "Staatsschutzgesetz",
@@ -7,18 +7,18 @@
     "salutationF": "Sehr geehrte Frau %NAME%!",
     "message": "Ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
   },
-  {
+  "twitter": {
     "name": "Twitter",
     "url": "https://www.twitter.com/%TWITTER%",
     "salutationM": "Sehr geehrter Herr %NAME%, ",
     "salutationF": "Sehr geehrte Frau %NAME%, ",
     "message": "ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
   },
-  {
+  "facebook": {
     "name": "Facebook",
     "url": "https://www.facebook.com/%FACEBOOK%",
     "salutationM": "Sehr geehrter Herr %NAME%, ",
     "salutationF": "Sehr geehrte Frau %NAME%, ",
     "message": "ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
   }
-]}
+}}
