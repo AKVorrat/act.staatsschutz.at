@@ -1,0 +1,16 @@
+#settings {
+    text-align: center;
+}
+
+#settings .row {
+    margin-bottom: 1em;
+}
+
+.background {
+    position: absolute;
+    opacity: 0.1;
+    filter: Alpha(opacity=10);
+    left: 48%;
+    top: -19%;
+    transform: translate(-50%,0);
+}

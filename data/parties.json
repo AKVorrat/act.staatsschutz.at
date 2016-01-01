@@ -1,0 +1,65 @@
+{"entries": {
+  "spoe": {
+    "name": "Sozialdemokratische Partei Österreichs",
+    "short": "SPÖ",
+    "color": "#FF0000",
+    "website": "https://www.spoe.at/",
+	"mail": "klub@spoe.at",
+	"phone": "+43 1 401 10-3471",
+	"fax": "+43 1 401 10-3455"
+  },
+  "oevp": {
+    "name": "Österreichische Volkspartei",
+    "short": "ÖVP",
+    "color": "#000000",
+    "website": "https://www.oevp.at/",
+	"mail": "office@oevpklub.at",
+	"phone": "+43 1 401 10-4408",
+	"fax": "+43 1 401 10-4437"
+  },
+  "fpoe": {
+    "name": "Freiheitliche Partei Österreichs",
+    "short": "FPÖ",
+    "color": "#0e428e",
+    "website": "https://www.fpoe.at/",
+	"mail": "parlamentsklub@fpoe.at",
+	"phone": "+43 1 401 10-7012",
+	"fax": "+43 1 401 10-7099"
+  },
+  "gruene": {
+    "name": "Die Grüne Alternative",
+    "short": "Grüne",
+    "color": "#6ba325",
+    "website": "https://www.gruene.at",
+	"mail": "infopool@gruene.at",
+	"phone": "+43 1 401 10-6698",
+	"fax": "+43 1 401 10-6793"
+  },
+  "neos": {
+    "name": "Das Neue Österreich und Liberales Forum",
+    "short": "NEOS",
+    "color": "#e6408d",
+    "website": "https://www.neos.eu",
+	"mail": "parlamentsklub@neos.eu",
+	"phone": "+43 1 401 10-9000",
+	"fax": "+43 1 401 10-9009"
+  },
+  "frank": {
+    "name": "Team Stronach für Österreich",
+    "short": "Stronach",
+    "color": "#f8d323",
+    "website": "http://www.teamstronach.at",
+	"mail": "parlamentsklub@teamstronach.at",
+	"phone": "+43 1 401 10-8000",
+	"fax": "+43 1 401 10-8008"
+  },
+  "none": {
+    "name": "Ohne Klubzugehörigkeit",
+    "short": "o.K.",
+    "color": "#FFF",
+    "website": "",
+	"mail": "",
+	"phone": "",
+	"fax": ""
+  }
+}}
