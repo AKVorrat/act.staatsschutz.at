@@ -1,0 +1,139 @@
+#slider {
+    width: 100%;
+    color: #FFF;
+    text-align: center;
+    display: table;
+}
+
+#slideCenter {
+    padding: 1.5em;
+    display: table-cell;
+    vertical-align: middle;
+    overflow: hidden;
+    position: relative;
+}
+
+.repImg {
+    height: 190px;
+    width: 137.15px;
+}
+
+.repBox {
+    display: inline-block;
+    position: relative;
+}
+
+.repBox .colorBox {
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    -webkit-transition: background-color .3s ease;
+    -moz-transition: background-color .3s ease;
+    -ms-transition: background-color .3s ease;
+    -o-transition: background-color .3s ease;
+    transition: background-color .3s ease;
+}
+
+.repBox:hover .colorBox {
+    z-index: 30;
+    background-color: rgba(0,0,0,0.8);
+}
+
+.repBox .btn {
+    position: absolute;
+    z-index: 100;
+    display: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 0;
+}
+
+.repBox:hover .btn {
+    display: block;
+}
+
+.detailsBox {
+    position: absolute;
+    width: 100%;
+    bottom: 6px;
+    z-index: 20;
+}
+
+.detailsBox p {
+    margin-bottom: 0;
+    text-shadow: 0px 0px 2px #000;
+}
+
+.detailsBox .name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.detailsBox .party {
+    font-size: 10px;
+    text-transform: uppercase;
+}
+
+.slideSide {
+    display: table-cell;
+    vertical-align: middle;
+    font-size: 3em;
+    width: 10%;
+}
+
+.slideSide:hover:not(.disabled) {
+    font-size: 3.5em;
+    text-shadow: 0px 0px 5px #FFF;
+}
+
+.slideSide.disabled {
+    color: #333;
+}
+
+.slideForwards {
+    animation-name: slideForwards;
+    animation-duration: .6s;
+}
+
+@keyframes slideForwards {
+    0% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+    50% {
+        opacity: 0;
+        transform: translate(-100%,0);
+    }
+    51% {
+        transform: translate(100%,0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+}
+
+.slideBackwards {
+    animation-name: slideBackwards;
+    animation-duration: .6s;
+}
+
+@keyframes slideBackwards {
+    0% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+    50% {
+        opacity: 0;
+        transform: translate(100%,0);
+    }
+    51% {
+        transform: translate(-100%,0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(0,0);
+    }
+}
