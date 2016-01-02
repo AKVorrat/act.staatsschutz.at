@@ -13,9 +13,7 @@
 }
 
 body {
-    font-family: "FiraSans", sans-serif;
     position: relative;
-    background: #111;
 }
 
 footer,
@@ -53,11 +51,6 @@ footer {
 footer img {
     margin-bottom: 1em;
     max-width: 100%;
-}
-
-footer a,
-footer a:hover {
-    color: inherit;
 }
 
 main {
