@@ -21,7 +21,6 @@ function calculatePackageSize() {
     imgWidth = $virtual.width();
     columnWidth = $slideContent.width();
     rowSize = Math.floor(columnWidth / imgWidth);
-    console.log(imgWidth + " / " + columnWidth + " = " + rowSize);
     
     $screenWidth = $(window).width();
     
@@ -44,6 +43,15 @@ function setListeners() {
         index = 0;
         slide(true);
     });
+    $("#contactModal").on("show.bs.modal", function (event) {
+        var button = $(event.relatedTarget);
+        var representative = button.data("representative");
+        representative = representatives[representative];
+        var modal = $(this);
+        var name = representative.title + " " + representative.firstname + " " + representative.lastname;
+        modal.find(".modal-title").text("Kontaktiere " + name);
+        modal.find(".modal-body").text("Kann " + name + " unsere Bürgerrechte bewahren?");
+    })
 }
 
 function requestJSON(file, task) {
@@ -114,9 +122,10 @@ function buildRepresentative(representative) {
     if (!representative)
         return;
     
-    var div, img;
+    var div, img, inArray;
     
-    img = imgPath + representatives.indexOf(representative) + ".jpg";
+    inArray = representatives.indexOf(representative);
+    img = imgPath + inArray + ".jpg";
     $.get(img).fail(function () {
         img = imgPath + "none.gif";
     })
@@ -126,7 +135,7 @@ function buildRepresentative(representative) {
     div.append($("<div class='colorBox " + representative.team + "'></div>"));
     div.append($("<div class='detailsBox'></div>").append($("<p class='name'></p>").text(representative.lastname)).append($("<p class='party'></p>").text(parties[representative.party].short)));
     div.append($("<img class='repImg' src='" + img + "' alt='" + representative.lastname + "' />"));
-    div.append($("<button type='button' class='btn btn-default btn-md' data-toggle='modal' data-target='#privacyModal'>Kontakt</button>"));
+    div.append($("<button type='button' class='btn btn-default btn-md' data-representative='" + inArray + "' data-toggle='modal' data-target='#contactModal'>Kontakt</button>"));
     
     return div;
 }
