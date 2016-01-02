@@ -1,0 +1,22 @@
+{"entries": {
+  "001": {
+    "male": "Herr",
+    "female": "Frau"
+  },
+  "002": {
+    "male": "Herrn",
+    "female": "Frau"
+  },
+  "050": {
+    "male": "er",
+    "female": "sie"
+  },
+  "051": {
+    "male": "ihn",
+    "female": "sie"
+  },
+  "100": {
+    "male": "geehrter",
+    "female": "geehrte"
+  }
+}}

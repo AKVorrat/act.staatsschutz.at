@@ -14,3 +14,30 @@
     top: -19%;
     transform: translate(-50%,0);
 }
+
+.modal img {
+    max-height: 275px;
+    margin-top: -15px;
+    margin-bottom: 20px;
+    -webkit-filter: grayscale(80%) sepia(30%);
+    filter: grayscale(80%) sepia(30%);
+    -moz-border-radius: 0 0 15px 15px;
+    -webkit-border-radius: 0 0 15px 15px;
+    border-radius: 0 0 15px 15px;
+}
+
+.modal .teamSign {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%,50%);
+    padding: 2px 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.modal p {
+    text-align: center;
+    font-size: larger;
+}

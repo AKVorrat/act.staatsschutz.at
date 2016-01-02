@@ -16,6 +16,8 @@
 .repImg {
     height: 190px;
     width: 137.15px;
+    -webkit-filter: grayscale(50%) sepia(20%);
+    filter: grayscale(50%) sepia(20%);
 }
 
 .repBox {
