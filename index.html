@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
         <meta name="author" content="Arbeitskreis Vorratsdaten Österreich" />
-        <meta name="description" content="Kein neuer Inlandsgeheimdienst in Österreich!" />
+        <meta name="description" content="Contact Your Representative!" />
         <link rel="stylesheet" type="text/css" href="./css/bootstrap-3.3.6.min.css" />
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <link rel="stylesheet" type="text/css" href="./css/various.css" />
@@ -16,7 +16,7 @@
         <script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="./js/bootstrap-3.3.6.min.js"></script>
         <script type="text/javascript" src="./js/slider.js"></script>
-        <title></title>
+        <title>Contact Your Representative!</title>
     </head>
 
     <body>
@@ -27,7 +27,7 @@
         </header>
     
         <main class="fluid-container">            
-            <img class="background noSelect hidden-xs hidden-sm" src="./img/austria.gif"/>
+            <img class="background noSelect hidden-xs hidden-sm" src="./img/austria.gif" alt="Österreich" />
             
             <div id="settings" class="container">
                 <div class="row">
@@ -50,7 +50,7 @@
                         <label id="frankLabel" class="btn btn-default">
                             <input id="frank" type="checkbox" autocomplete="off">FRANK
                         </label>
-                        <label id="frankLabel" class="btn btn-default">
+                        <label id="noneLabel" class="btn btn-default">
                             <input id="none" type="checkbox" autocomplete="off">parteilos
                         </label>
                     </div>
@@ -107,12 +107,10 @@
         </footer>
         
         <!--START contactModal-->
-        <details class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal">
+        <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Schließen"><span aria-hidden="true">&times;</span></button>
-                        <h3 class="modal-title text-center" id="privacyModalLabel">Kontakt</h3>
+                    <div class="modal-header" style="position: relative;">
                     </div>
                     <div class="modal-body">
                     </div>
@@ -121,7 +119,7 @@
                     </div>
                 </div>
             </div>
-        </details>
+        </div>
         <!--END contactModal-->
     </body>
 </html>
