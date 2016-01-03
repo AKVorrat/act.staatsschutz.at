@@ -10,6 +10,7 @@ var jsonTeams = "./data/teams.json";
 var jsonGenders = "./data/genders.json";
 var imgPath = "./img/representatives/";
 var packageSize, index = 0;
+var image_fake = true;
 
 function findElements() {
     $slideContent = $("#slideContent");
@@ -63,16 +64,15 @@ function setListeners() {
         var modal = $(this);
         var $modalTitle = modal.find(".modal-header");
         var $modalContent = modal.find(".modal-body");
+        var MPimg, name;
         
-        var name = representative.firstname + " " + representative.lastname;
+        name = representative.firstname + " " + representative.lastname;
         if (representative.title != "")
             name = representative.title + " " + name;
         
         inArray = representatives.indexOf(representative);
-        img = imgPath + inArray + ".jpg";
-        $.get(img).fail(function () {
-            img = imgPath + "none.gif";
-        })
+        MPimg = getIMGsrc(representative);
+        
         
         $contactButtons = $("<div class='container-fluid text-center'></div>");
         // build button "launcher" here
@@ -82,12 +82,21 @@ function setListeners() {
         $modalTitle.html($("<div class='background " + representative.team + "'></div>")
             .append($("<img class='img-responsive center-block austria' src='./img/austria.gif' />")))
             .append($("<h2 class='modal-title text-center'></h2>").text(name))
-            .append($("<img class='img-responsive center-block repImg' style='border-color: " + teams[representative.team].color + ";' src='" + img + "' />"))
+            .append($("<img class='img-responsive center-block repImg' style='border-color: " + teams[representative.team].color + ";' src='" + MPimg + "' />"))
             .append($("<div class='teamSign' style='background: " + teams[representative.team].color + ";'>" + teams[representative.team].name + "</div>"));
         $modalContent.html($("<p></p>").append(jsonResolve(teams[representative.team].introduction, representative) + " ")
             .append($("<span style='color: " + teams[representative.team].color + ";'></span>").text(jsonResolve(teams[representative.team].todo, representative))))
             .append($contactButtons);
     })
+}
+
+function getIMGsrc (representative) {
+    if (typeof image_fake !== 'undefined' && image_fake) {
+        MPimg = imgPath + "none.gif";
+    }
+    else {
+        MPimg = imgPath + representative.id + ".jpg";    
+    }
 }
 
 function requestJSON(file, task) {
@@ -167,15 +176,12 @@ function buildRepresentative(representative) {
     var div, img, inArray;
     
     inArray = representatives.indexOf(representative);
-    img = imgPath + inArray + ".jpg";
-    $.get(img).fail(function () {
-        img = imgPath + "none.gif";
-    })
+    MPimg = getIMGsrc(representative);
     
     div = $("<div class='repBox'></div>");
     div.append($("<div class='colorBox " + representative.team + "'></div>"));
     div.append($("<div class='detailsBox'></div>").append($("<p class='name'></p>").text(representative.lastname)).append($("<p class='party'></p>").text(parties[representative.party].short)));
-    div.append($("<img class='repImg' src='" + img + "' alt='" + representative.lastname + "' />"));
+    div.append($("<img class='repImg' src='" + MPimg + "' alt='" + representative.lastname + "' />"));
     div.append($("<button type='button' class='btn btn-default btn-md' data-representative='" + inArray + "' data-toggle='modal' data-target='#contactModal'>Kontakt</button>"));
     return div;
 }
