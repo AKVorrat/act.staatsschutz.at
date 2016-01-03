@@ -74,13 +74,19 @@ function setListeners() {
             img = imgPath + "none.gif";
         })
         
+        $contactButtons = $("<div class='container-fluid text-center'></div>");
+        // build button "launcher" here
+        $contactButtons.html($("<div class='contactButton mail'></div>").html($("<img class='contactIcon' src='./img/share/mail.png' alt='Mail Icon' />")).append($("<span></span>").text(representative.mail)));
+        $contactButtons.append($("<div class='contactButton twitter'></div>").html($("<img class='contactIcon' src='./img/share/twitter.png' alt='Twitter Icon' />")).append($("<span></span>").text(representative.twitter)));
+        
         $modalTitle.html($("<div class='background " + representative.team + "'></div>")
             .append($("<img class='img-responsive center-block austria' src='./img/austria.gif' />")))
             .append($("<h2 class='modal-title text-center'></h2>").text(name))
             .append($("<img class='img-responsive center-block repImg' style='border-color: " + teams[representative.team].color + ";' src='" + img + "' />"))
             .append($("<div class='teamSign' style='background: " + teams[representative.team].color + ";'>" + teams[representative.team].name + "</div>"));
         $modalContent.html($("<p></p>").append(jsonResolve(teams[representative.team].introduction, representative) + " ")
-            .append($("<span style='color: " + teams[representative.team].color + ";'></span>").text(jsonResolve(teams[representative.team].todo, representative))));
+            .append($("<span style='color: " + teams[representative.team].color + ";'></span>").text(jsonResolve(teams[representative.team].todo, representative))))
+            .append($contactButtons);
     })
 }
 
