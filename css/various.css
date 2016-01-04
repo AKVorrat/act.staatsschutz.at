@@ -74,36 +74,9 @@ main .background {
 }
 
 .contactButton {
-    width: 40px;
-    height: 40px;
-    overflow: hidden;
     display: inline-block;
     margin: 2px;
     padding: 5px;
-}
-
-.contactButton:hover:not(.disabled) {
-    width: auto;
-}
-
-.contactButton.disabled {
-    background-color: #888;
-}
-
-.contactButton.mail {
-    background-color: #0F0;
-}
-
-.contactButton.fax {
-    background-color: #0F0;
-}
-
-.contactButton.twitter {
-    background-color: #00F;
-}
-
-.contactButton.facebook {
-    background-color: #00F;
 }
 
 .contactIcon {

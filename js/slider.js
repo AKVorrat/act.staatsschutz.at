@@ -78,6 +78,49 @@ function setListeners() {
         $("#introduction").text(jsonResolve(teams[representative.team].introduction, representative) + " ");
         $("#todo").text(jsonResolve(teams[representative.team].todo, representative))
                   .attr("style", "color: " + teams[representative.team].color + ";");
+        
+        $web = $("#web");
+        if (representative.website) {
+            $web.removeClass("hidden");
+            $web.find("span").text(representative.website);
+        } else {
+            $web.addClass("hidden");
+        }
+        $mail = $("#mail");
+        if (representative.mail) {
+            $mail.removeClass("hidden");
+            $mail.find("span").text(representative.mail);
+        } else {
+            $mail.addClass("hidden");
+        }
+        $phone = $("#phone");
+        if (representative.phone) {
+            $phone.removeClass("hidden");
+            $phone.find("span").text(representative.phone);
+        } else {
+            $phone.addClass("hidden");
+        }
+        $fax = $("#fax");
+        if (representative.fax) {
+            $fax.removeClass("hidden");
+            $fax.find("span").text(representative.fax);
+        } else {
+            $fax.addClass("hidden");
+        }
+        $twitter = $("#twitter");
+        if (representative.twitter) {
+            $twitter.removeClass("hidden");
+            $twitter.find("span").text(representative.twitter);
+        } else {
+            $twitter.addClass("hidden");
+        }
+        $facebook = $("#facebook");
+        if (representative.facebook) {
+            $facebook.removeClass("hidden");
+            $facebook.find("span").text(representative.facebook);
+        } else {
+            $facebook.addClass("hidden");
+        }
     })
 }
 
