@@ -15,7 +15,7 @@ main .background {
     transform: translate(-50%,0);
 }
 
-.modal .background {
+.modal #repColor {
     position: absolute;
     width: 100%;
     height: 65%;
@@ -38,7 +38,7 @@ main .background {
     filter: alpha(opacity=40);
 }
 
-.modal .repImg {
+.modal #repImg {
     position: relative;
     height: 250px;
     width: auto;
@@ -51,7 +51,7 @@ main .background {
     border-width: 3px;
 }
 
-.modal .teamSign {
+.modal #teamSign {
     position: absolute;
     bottom: 18px;
     left: 50%;
