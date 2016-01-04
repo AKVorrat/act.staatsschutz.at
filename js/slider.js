@@ -10,6 +10,7 @@ var jsonTeams = "./data/teams.json";
 var jsonGenders = "./data/genders.json";
 var imgPath = "./img/representatives/";
 var packageSize, index = 0;
+var image_fake = false;
 
 function findElements() {
     $slideContent = $("#slideContent");
@@ -63,16 +64,12 @@ function setListeners() {
         var modal = $(this);
         var $modalTitle = modal.find(".modal-header");
         var $modalContent = modal.find(".modal-body");
-        
-        var name = representative.firstname + " " + representative.lastname;
-        if (representative.title != "")
-            name = representative.title + " " + name;
-        
+        var MPimg, mp_name;
+            
         inArray = representatives.indexOf(representative);
-        img = imgPath + inArray + ".jpg";
-        $.get(img).fail(function () {
-            img = imgPath + "none.gif";
-        })
+        MPimg = getMPimg(representative, inArray);
+        mp_name = getMPname(representative);
+        
         
         $contactButtons = $("<div class='container-fluid text-center'></div>");
         // build button "launcher" here
@@ -81,13 +78,35 @@ function setListeners() {
         
         $modalTitle.html($("<div class='background " + representative.team + "'></div>")
             .append($("<img class='img-responsive center-block austria' src='./img/austria.gif' />")))
-            .append($("<h2 class='modal-title text-center'></h2>").text(name))
-            .append($("<img class='img-responsive center-block repImg' style='border-color: " + teams[representative.team].color + ";' src='" + img + "' />"))
+            .append($("<h2 class='modal-title text-center'></h2>").text(mp_name))
+            .append($("<img class='img-responsive center-block repImg' style='border-color: " + teams[representative.team].color + ";' src='" + MPimg + "' />"))
             .append($("<div class='teamSign' style='background: " + teams[representative.team].color + ";'>" + teams[representative.team].name + "</div>"));
         $modalContent.html($("<p></p>").append(jsonResolve(teams[representative.team].introduction, representative) + " ")
             .append($("<span style='color: " + teams[representative.team].color + ";'></span>").text(jsonResolve(teams[representative.team].todo, representative))))
             .append($contactButtons);
     })
+}
+
+function getMPimg (representative, inArray) {
+    if (typeof image_fake !== 'undefined' && image_fake) {
+        return imgPath + "none.gif";
+    }
+    else {
+        return imgPath + 'small/' + inArray + ".jpg";    
+    }
+}
+
+function getMPname (representative) {
+    mp_name = [
+        (representative.honorific_prefix || '')
+        , (representative.firstname || '')
+        , (representative.lastname || '')
+    ];
+    mp_name = mp_name.join(' ').trim();
+    if (representative.honorific_suffix) {
+        mp_name += ', ' + representative.honorific_suffix;
+    }
+    return mp_name;
 }
 
 function requestJSON(file, task) {
@@ -111,7 +130,7 @@ $(document).ready(function () {
         genders = passGenders.entries;
     });
     requestJSON(jsonRepresentatives, function (passRepresentatives) {
-        representatives = passRepresentatives.entries;
+        representatives = passRepresentatives;
         blocked = false;
         $slideLeft.removeClass("disabled");
         $slideRight.removeClass("disabled");
@@ -123,10 +142,11 @@ $(document).ready(function () {
 function updateRepresentatives() {
     filteredRepresentatives = [];
     
-    $.each(representatives, function (arrayID, representative) {
-        if (matchSettings(representative))
-            filteredRepresentatives.push(representative);
-    });
+    for (var i = 0; i < representatives.length; i++) {
+        if (matchSettings(representatives[i])) {
+            filteredRepresentatives.push(representatives[i]);
+        }
+    }
 }
 
 function matchSettings(representative) {
@@ -167,15 +187,13 @@ function buildRepresentative(representative) {
     var div, img, inArray;
     
     inArray = representatives.indexOf(representative);
-    img = imgPath + inArray + ".jpg";
-    $.get(img).fail(function () {
-        img = imgPath + "none.gif";
-    })
+    MPimg = getMPimg(representative, inArray);
+    mp_name = getMPname(representative);
     
     div = $("<div class='repBox'></div>");
     div.append($("<div class='colorBox " + representative.team + "'></div>"));
-    div.append($("<div class='detailsBox'></div>").append($("<p class='name'></p>").text(representative.lastname)).append($("<p class='party'></p>").text(parties[representative.party].short)));
-    div.append($("<img class='repImg' src='" + img + "' alt='" + representative.lastname + "' />"));
+    div.append($("<div class='detailsBox'></div>").append($("<p class='name'></p>").text(mp_name)).append($("<p class='party'></p>").text(parties[representative.party].short)));
+    div.append($("<img class='repImg' src='" + MPimg + "' alt='" + mp_name + "' />"));
     div.append($("<button type='button' class='btn btn-default btn-md' data-representative='" + inArray + "' data-toggle='modal' data-target='#contactModal'>Kontakt</button>"));
     return div;
 }
