@@ -119,35 +119,44 @@
                         <div id="teamSign"></div>
                     </div>
                     <div class="modal-body">
-                        <p>
-                            <span id="introduction"></span>
-                            <span id="todo"></span>
-                        </p>
+                        <p><span id="introduction"></span><span id="todo"></span></p>
                         <div id="contactButtons" class="container-fluid text-center">
-                            <div id="web" class="contactButton hidden col-xs-12">
-                                <img class="contactIcon" src="./img/share/web.png" alt="Web Icon" />
-                                <span></span>
-                            </div>
-                            <div id="mail" class="contactButton hidden col-xs-12">
-                                <img class="contactIcon" src="./img/share/mail.png" alt="Mail Icon" />
-                                <span></span>
-                            </div>
-                            <div id="phone" class="contactButton hidden col-xs-12">
-                                <img class="contactIcon" src="./img/share/phone.png" alt="Phone Icon" />
-                                <span></span>
-                            </div>
-                            <div id="fax" class="contactButton hidden col-xs-12">
-                                <img class="contactIcon" src="./img/share/fax.png" alt="Fax Icon" />
-                                <span></span>
-                            </div>
-                            <div id="twitter" class="contactButton hidden col-xs-12">
-                                <img class="contactIcon" src="./img/share/twitter.png" alt="Twitter Icon" />
-                                <span></span>
-                            </div>
-                            <div id="facebook" class="contactButton hidden col-xs-12">
-                                <img class="contactIcon" src="./img/share/facebook.png" alt="Facebook Icon" />
-                                <span></span>
-                            </div>
+                            <form id="formMail" method="link" action="" class="hidden">
+                                <button type="submit" class="btn btn-default contactButton" aria-label="Mail">
+                                    <img class="contactIcon mail"></img>
+                                    <span>E-Mail</span>
+                                </button>
+                            </form>
+                            <form id="formPhone" method="link" action="" class="">
+                                <button type="submit" class="btn btn-default contactButton" aria-label="Phone">
+                                    <img class="contactIcon phone"></img>
+                                    <span>Telefon</span>
+                                </button>
+                            </form>
+                            <form id="formFax" method="link" action="" class="">
+                                <button type="submit" class="btn btn-default contactButton" aria-label="Fax">
+                                    <img class="contactIcon fax"></img>
+                                    <span>Fax</span>
+                                </button>
+                            </form>
+                            <form id="formTwitter" method="link" action="" target="_blank" class="hidden">
+                                <button type="submit" class="btn btn-default contactButton" aria-label="Twitter">
+                                    <img class="contactIcon twitter"></img>
+                                    <span>Twitter</span>
+                                </button>
+                            </form>
+                            <form id="formFacebook" method="link" action="" target="_blank" class="hidden">
+                                <button type="submit" class="btn btn-default contactButton" aria-label="Facebook">
+                                    <img class="contactIcon facebook"></img>
+                                    <span>Facebook</span>
+                                </button>
+                            </form>
+                            <form id="formWeb" method="link" action="" target="_blank" class="hidden">
+                                <button type="submit" class="btn btn-default contactButton" aria-label="Web">
+                                    <img class="contactIcon web"></img>
+                                    <span>Web</span>
+                                </button>
+                            </form>
                         </div>
                     </div>
                     <div class="modal-footer">

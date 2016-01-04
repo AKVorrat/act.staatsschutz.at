@@ -79,47 +79,67 @@ function setListeners() {
         $("#todo").text(jsonResolve(teams[representative.team].todo, representative))
                   .attr("style", "color: " + teams[representative.team].color + ";");
         
-        $web = $("#web");
-        if (representative.website) {
-            $web.removeClass("hidden");
-            $web.find("span").text(representative.website);
-        } else {
-            $web.addClass("hidden");
-        }
-        $mail = $("#mail");
+        $formMail = modal.find("#formMail");
         if (representative.mail) {
-            $mail.removeClass("hidden");
-            $mail.find("span").text(representative.mail);
+            $formMail.removeClass("hidden");
+            $formMail.attr("action", format.mail.url.replace("%MAIL%", representative.mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
+        } else if (parties[representative.party].mail) {
+            $formMail.removeClass("hidden");
+            $formMail.attr("action", parties[representative.party].mail);
         } else {
-            $mail.addClass("hidden");
+            $formMail.addClass("hidden");
+            $formMail.attr("action", "");
         }
-        $phone = $("#phone");
+        
+        $formPhone = modal.find("#formPhone");
         if (representative.phone) {
-            $phone.removeClass("hidden");
-            $phone.find("span").text(representative.phone);
+            $formPhone.removeClass("hidden");
+            $formPhone.attr("action", representative.phone);
+        } else if (parties[representative.party].phone) {
+            $formPhone.removeClass("hidden");
+            $formPhone.attr("action", "tel:" + parties[representative.party].phone.replace(new RegExp(" ", "g"), ""));
         } else {
-            $phone.addClass("hidden");
+            $formPhone.addClass("hidden");
+            $formPhone.attr("action", "");
         }
-        $fax = $("#fax");
+        
+        $formFax = modal.find("#formFax");
         if (representative.fax) {
-            $fax.removeClass("hidden");
-            $fax.find("span").text(representative.fax);
+            $formFax.removeClass("hidden");
+            $formFax.attr("action", representative.fax);
+        } else if (parties[representative.party].fax) {
+            $formFax.removeClass("hidden");
+            $formFax.attr("action", "fax:" + parties[representative.party].fax.replace(new RegExp(" ", "g"), ""));
         } else {
-            $fax.addClass("hidden");
+            $formFax.addClass("hidden");
+            $formFax.attr("action", "");
         }
-        $twitter = $("#twitter");
+        
+        $formTwitter = modal.find("#formTwitter");
         if (representative.twitter) {
-            $twitter.removeClass("hidden");
-            $twitter.find("span").text(representative.twitter);
+            $formTwitter.removeClass("hidden");
+            $formTwitter.attr("action", format.twitter.url.replace("%TWITTER%", representative.twitter));
         } else {
-            $twitter.addClass("hidden");
+            $formTwitter.addClass("hidden");
+            $formTwitter.attr("action", "");
         }
-        $facebook = $("#facebook");
+        
+        $formFacebook = modal.find("#formFacebook");
         if (representative.facebook) {
-            $facebook.removeClass("hidden");
-            $facebook.find("span").text(representative.facebook);
+            $formFacebook.removeClass("hidden");
+            $formFacebook.attr("action", format.facebook.url.replace("%FACEBOOK%", representative.facebook));
         } else {
-            $facebook.addClass("hidden");
+            $formFacebook.addClass("hidden");
+            $formFacebook.attr("action", "");
+        }
+        
+        $formWeb = modal.find("#formWeb");
+        if (representative.website) {
+            $formWeb.removeClass("hidden");
+            $formWeb.attr("action", representative.website);
+        } else {
+            $formWeb.addClass("hidden");
+            $formWeb.attr("action", "");
         }
     })
 }
