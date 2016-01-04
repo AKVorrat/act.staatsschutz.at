@@ -10,7 +10,7 @@ var jsonTeams = "./data/teams.json";
 var jsonGenders = "./data/genders.json";
 var imgPath = "./img/representatives/";
 var packageSize, index = 0;
-var image_fake = true;
+var image_fake = false;
 
 function findElements() {
     $slideContent = $("#slideContent");
@@ -67,7 +67,7 @@ function setListeners() {
         var MPimg, mp_name;
             
         inArray = representatives.indexOf(representative);
-        MPimg = getMPimg(representative);
+        MPimg = getMPimg(representative, inArray);
         mp_name = getMPname(representative);
         
         
@@ -87,12 +87,12 @@ function setListeners() {
     })
 }
 
-function getMPimg (representative) {
+function getMPimg (representative, inArray) {
     if (typeof image_fake !== 'undefined' && image_fake) {
         return imgPath + "none.gif";
     }
     else {
-        return imgPath + representative.id + ".jpg";    
+        return imgPath + 'small/' + inArray + ".jpg";    
     }
 }
 
@@ -187,7 +187,7 @@ function buildRepresentative(representative) {
     var div, img, inArray;
     
     inArray = representatives.indexOf(representative);
-    MPimg = getMPimg(representative);
+    MPimg = getMPimg(representative, inArray);
     mp_name = getMPname(representative);
     
     div = $("<div class='repBox'></div>");
