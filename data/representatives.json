@@ -911,12 +911,15 @@
         "website": "http://www.gahr.at "
     },
     {
+        "id": "PAD_86976",
+        "source_page_url": "http://www.parlament.gv.at/WWER/PAD_86976/index.shtml",
         "facebook": "https://www.facebook.com/cgamon",
         "firstname": "Claudia Angela",
         "gender": "female",
         "lastname": "Gamon",
         "mail": "claudia.gamon@neos.eu",
         "party": "neos",
+        "group": "NEOS",
         "team": "liberty",
         "title": "MSc (WU)",
         "twitter": "https://twitter.com/dieGamon"
