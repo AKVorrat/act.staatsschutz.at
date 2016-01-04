@@ -73,12 +73,69 @@ main .background {
     font-size: larger;
 }
 
-.contactButton {
+.modal form {
     display: inline-block;
-    margin: 2px;
-    padding: 5px;
+    margin: 2px 0;
+}
+
+.modal span {
+    vertical-align: middle;
 }
 
 .contactIcon {
-    
+    width: 20px;
+    height: 20px;
+    margin: 0px 3px 0px -2px;
+    background-size: contain;
+    display: inline-block;
+}
+
+.contactIcon.mail {
+    background-image: url(../img/share/mail.png);
+}
+
+form:hover .contactIcon.mail {
+    background-image: url(../img/share/mail-hover.png);
+}
+
+.contactIcon.phone {
+    background-image: url(../img/share/phone.png);
+}
+
+form:hover .contactIcon.phone {
+    background-image: url(../img/share/phone-hover.png);
+}
+
+.contactIcon.fax {
+    background-image: url(../img/share/fax.png);
+}
+
+form:hover .contactIcon.fax {
+    background-image: url(../img/share/fax-hover.png);
+}
+
+.contactIcon.twitter {
+    width: 10px;
+    background-image: url(../img/share/twitter.png);
+}
+
+form:hover .contactIcon.twitter {
+    background-image: url(../img/share/twitter-hover.png);
+}
+
+.contactIcon.facebook {
+    width: 10px;
+    background-image: url(../img/share/facebook.png);
+}
+
+form:hover .contactIcon.facebook {
+    background-image: url(../img/share/facebook-hover.png);
+}
+
+.contactIcon.web {
+    background-image: url(../img/share/web.png);
+}
+
+form:hover .contactIcon.web {
+    background-image: url(../img/share/web-hover.png);
 }
