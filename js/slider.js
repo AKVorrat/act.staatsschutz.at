@@ -1,5 +1,5 @@
-var searchParties = {"spoe": true, "oevp": true, "fpoe": false, "gruene": false, "neos": false, "frank": false, "none": false};
-var searchTeams = {"liberty": false, "spy": true, "unknown": false};
+var searchParties = {"spoe": true, "oevp": true, "fpoe": true, "gruene": true, "neos": true, "frank": true, "none": false};
+var searchTeams = {"liberty": true, "spy": true, "unknown": false};
 var representatives, format, parties, teams, genders;
 var blocked = true;
 var filteredRepresentatives = [];
@@ -9,7 +9,7 @@ var jsonParties = "./data/parties.json";
 var jsonTeams = "./data/teams.json";
 var jsonGenders = "./data/genders.json";
 var imgPath = "./img/representatives/";
-var packageSize, index = 0;
+var packageSize, index = 0, imgWidth = 137.15;
 var image_fake = false;
 
 function findElements() {
@@ -19,8 +19,7 @@ function findElements() {
 }
 
 function calculatePackageSize() {
-    var $virtual, imgWidth, columnWidth, rowSize, screenWidth;
-    imgWidth = $('img.repImg:first').width() || 137.15;
+    var $virtual, columnWidth, rowSize, screenWidth;
     columnWidth = $slideContent.width();
     rowSize = Math.floor(columnWidth / imgWidth);
     screenWidth = $(window).width();
@@ -71,7 +70,7 @@ function setListeners() {
         MPimg = getMPimg(representative, inArray);
         MPname = getMPname(representative);
         
-        $("#repColor").attr("class", representative.team);
+        $("#repColor").attr("class", representative.team + "BG");
         modal.find(".modal-header h2").text(MPname);
         $("#repImg").attr("src", MPimg)
                     .attr("style", "border-color: " + teams[representative.team].color + ";");
@@ -79,7 +78,7 @@ function setListeners() {
                       .attr("style", "background: " + teams[representative.team].color + ";");
         $("#introduction").text(jsonResolve(teams[representative.team].introduction, representative) + " ");
         $("#todo").text(jsonResolve(teams[representative.team].todo, representative))
-                  .attr("style", "color: " + teams[representative.team].color + ";");
+                  .attr("class", representative.team);
         
         $formMail = modal.find("#formMail");
         if (representative.mail) {
@@ -258,7 +257,7 @@ function buildRepresentative(representative) {
     MPimg = getMPimg(representative, inArray);
     
     div = $("<div class='repBox'></div>");
-    div.append($("<div class='colorBox " + representative.team + "'></div>"))
+    div.append($("<div class='colorBox " + representative.team + "BG" + "'></div>"))
        .append($("<div class='detailsBox'></div>").append($("<p class='name'></p>").text(representative.lastname)).append($("<p class='party'></p>").text(parties[representative.party].short)))
        .append($("<img class='repImg' src='" + MPimg + "' alt='" + representative.lastname + "' />"))
        .append($("<button type='button' class='btn btn-default btn-md' data-representative='" + inArray + "' data-toggle='modal' data-target='#contactModal'>Kontakt</button>"));
