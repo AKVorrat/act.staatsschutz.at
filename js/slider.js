@@ -19,15 +19,13 @@ function findElements() {
 }
 
 function calculatePackageSize() {
-    var $virtual, imgWidth, columnWidth, rowSize, $screenWidth;
-    $virtual = $("<div class='repImg'></div>");
-    imgWidth = $virtual.width();
+    var $virtual, imgWidth, columnWidth, rowSize, screenWidth;
+    imgWidth = $('img.repImg:first').width() || 137.15;
     columnWidth = $slideContent.width();
     rowSize = Math.floor(columnWidth / imgWidth);
+    screenWidth = $(window).width();
     
-    $screenWidth = $(window).width();
-    
-    if ($screenWidth >= 992)
+    if (screenWidth >= 992)
         packageSize = 2 * rowSize;
     else
         packageSize = rowSize;
@@ -177,6 +175,7 @@ $(document).ready(function () {
     findElements();
     calculatePackageSize();
     setListeners();
+
     requestJSON(jsonFormat, function (passFormat) {
         format = passFormat.entries;
     });
@@ -280,8 +279,9 @@ function slide(direction) {
             $slideContent.addClass("slideBackwards");
 
         setTimeout(function () {
-            updateSlider(direction)
+            updateSlider(direction);
             blocked = false;
         }, 300);
+
     }
 }
