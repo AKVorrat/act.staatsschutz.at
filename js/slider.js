@@ -2,7 +2,7 @@ var searchParties = {"spoe": true, "oevp": true, "fpoe": false, "gruene": false,
 var searchTeams = {"liberty": false, "spy": true, "unknown": false};
 var representatives, format, parties, teams, genders;
 var blocked = true;
-var filteredRepresentatives;
+var filteredRepresentatives = [];
 var jsonRepresentatives = "./data/representatives.json";
 var jsonFormat = "./data/format.json";
 var jsonParties = "./data/parties.json";
@@ -44,18 +44,22 @@ function jsonResolve(target, representative) {
     return str;
 }
 
+function adaptSearch() {
+    changed = updateRepresentatives();
+    if (changed) {
+        index = 0;
+        slide(true);
+    }
+}
+
 function setListeners() {
     $("#partyInput :checkbox").change(function () {
         searchParties[$(this).attr("id")] = !searchParties[$(this).attr("id")];
-        updateRepresentatives();
-        index = 0;
-        slide(true);
+        adaptSearch();
     });
     $("#teamInput :checkbox").change(function () {
         searchTeams[$(this).attr("id")] = !searchTeams[$(this).attr("id")];
-        updateRepresentatives();
-        index = 0;
-        slide(true);
+        adaptSearch();
     });
     $("#contactModal").on("show.bs.modal", function (event) {
         var button = $(event.relatedTarget);
@@ -147,8 +151,7 @@ function setListeners() {
 function getMPimg (representative, inArray) {
     if (typeof image_fake !== 'undefined' && image_fake) {
         return imgPath + "none.gif";
-    }
-    else {
+    } else {
         return imgPath + 'small/' + inArray + ".jpg";    
     }
 }
@@ -197,13 +200,22 @@ $(document).ready(function () {
 });
 
 function updateRepresentatives() {
-    filteredRepresentatives = [];
-    
+    changed = false;
+    cachedRepresentatives = [];
+
     for (var i = 0; i < representatives.length; i++) {
         if (matchSettings(representatives[i])) {
-            filteredRepresentatives.push(representatives[i]);
+            cachedRepresentatives.push(representatives[i]);
+            if (filteredRepresentatives.indexOf(representatives[i]) == -1) {
+                changed = true;
+            }
+        } else if (filteredRepresentatives.indexOf(representatives[i]) != -1) {
+            changed = true;
         }
     }
+
+    filteredRepresentatives = cachedRepresentatives;
+    return changed;
 }
 
 function matchSettings(representative) {
