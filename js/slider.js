@@ -256,11 +256,14 @@ function buildRepresentative(representative) {
     inArray = representatives.indexOf(representative);
     MPimg = getMPimg(representative, inArray);
     
-    div = $("<div class='repBox'></div>");
-    div.append($("<div class='colorBox " + representative.team + "BG" + "'></div>"))
-       .append($("<div class='detailsBox'></div>").append($("<p class='name'></p>").text(representative.lastname)).append($("<p class='party'></p>").text(parties[representative.party].short)))
-       .append($("<img class='repImg' src='" + MPimg + "' alt='" + representative.lastname + "' />"))
-       .append($("<button type='button' class='btn btn-default btn-md' data-representative='" + inArray + "' data-toggle='modal' data-target='#contactModal'>Kontakt</button>"));
+    div = $("<div></div>").attr("class", "repBox");
+    div.html($("<a></a>").attr("href", "").attr("data-toggle", "modal").attr("data-target", "#contactModal").attr("data-representative", inArray)
+            .append($("<div></div>").attr("class", "colorBox " + representative.team + "BG")));
+    div.append($("<div></div>").attr("class", "detailsBox")
+            .append($("<p></p>").attr("class", "name").text(representative.lastname))
+            .append($("<p></p>").attr("class", "party").text(parties[representative.party].short)));
+    div.append($("<img />").attr("class", "repImg").attr("src", MPimg).attr("alt", representative.lastname));
+    div.append($("<button></button>").attr("type", "button").attr("class", "btn btn-default btn-md").attr("data-representative", inArray).attr("data-toggle", "modal").attr("data-target", "#contactModal").text("Kontakt"));
     return div;
 }
 
@@ -281,6 +284,5 @@ function slide(direction) {
             updateSlider(direction);
             blocked = false;
         }, 300);
-
     }
 }
