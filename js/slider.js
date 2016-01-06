@@ -2,14 +2,14 @@ var searchParties = {"spoe": true, "oevp": true, "fpoe": true, "gruene": true, "
 var searchTeams = {"liberty": true, "spy": true, "unknown": false};
 var representatives, format, parties, teams, genders;
 var blocked = true;
-var filteredRepresentatives = [];
+var filteredRepresentatives = [], steps = [], currentStep = -1;
 var jsonRepresentatives = "./data/representatives.json";
 var jsonFormat = "./data/format.json";
 var jsonParties = "./data/parties.json";
 var jsonTeams = "./data/teams.json";
 var jsonGenders = "./data/genders.json";
 var imgPath = "./img/representatives/";
-var packageSize, index = 0, imgWidth = 137.15;
+var packageSize, imgWidth = 137.15;
 var image_fake = false;
 
 function findElements() {
@@ -44,7 +44,7 @@ function jsonResolve(target, representative) {
 function adaptSearch() {
     changed = updateRepresentatives();
     if (changed) {
-        index = 0;
+        currentStep = -1;
         slide(true);
     }
 }
@@ -200,6 +200,7 @@ $(document).ready(function () {
 function updateRepresentatives() {
     changed = false;
     cachedRepresentatives = [];
+    steps = [];
 
     for (var i = 0; i < representatives.length; i++) {
         if (matchSettings(representatives[i])) {
@@ -211,8 +212,16 @@ function updateRepresentatives() {
             changed = true;
         }
     }
-
+    
+    for (var i = 0; i < cachedRepresentatives.length; i++) {
+        if (i % packageSize == 0) {
+            steps.push(i);
+        }
+    }
+    
     filteredRepresentatives = cachedRepresentatives;
+    console.log("There are", filteredRepresentatives.length, "representatives in the search result now.");
+    console.log("Using steps", steps.join(", "));
     return changed;
 }
 
@@ -224,36 +233,45 @@ function checkBlocked() {
     var len = filteredRepresentatives.length;
     if (len <= 0) {
         $slideContent.text("Kein zutreffendes Suchergebnis gefunden.");
-        $slideLeft.addClass("disabled");
-        $slideRight.addClass("disabled");
+        setDisabled(true);
         return true;
     } else {
-        $slideLeft.removeClass("disabled");
-        $slideRight.removeClass("disabled");
+        setDisabled(false);
         return false;
     }
 }
 
+function setDisabled(value) {
+    if (value) {
+        $slideLeft.addClass("disabled");
+        $slideRight.addClass("disabled");
+    } else {
+        $slideLeft.removeClass("disabled");
+        $slideRight.removeClass("disabled");
+    }
+}
+
 function updateSlider(direction) {
+    var len = filteredRepresentatives.length;
     $slideContent.empty();
     
-    if (!direction) {
-        index = bend(index - 2 * packageSize);
+    if (direction) {
+        currentStep = bend(currentStep + 1, steps.length);
+    } else {
+        currentStep = bend(currentStep - 1, steps.length);
     }
     
-    var i, pointer, representative;
-    for (i = 0; i < packageSize; i++) {
-        pointer = bend(index + i);
-        representative = filteredRepresentatives[pointer];
+    left = len - steps[currentStep] + packageSize;
+    goForward = Math.min(packageSize, left);
+    
+    for (var i = 0; i < goForward; i++) {
+        var representative = filteredRepresentatives[steps[currentStep] + i];
         var builtRepresentative = buildRepresentative(representative);
         $slideContent.append(builtRepresentative);
     }
-    
-    index = index + i;
 }
 
-function bend(x) {
-    var len = filteredRepresentatives.length;
+function bend(x, len) {
     if (x > len - 1)
         x = x % len;
     while (x < 0)
