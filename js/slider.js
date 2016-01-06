@@ -220,6 +220,20 @@ function matchSettings(representative) {
     return searchParties[representative.party] && searchTeams[representative.team];
 }
 
+function checkBlocked() {
+    var len = filteredRepresentatives.length;
+    if (len <= 0) {
+        $slideContent.text("Kein zutreffendes Suchergebnis gefunden.");
+        $slideLeft.addClass("disabled");
+        $slideRight.addClass("disabled");
+        return true;
+    } else {
+        $slideLeft.removeClass("disabled");
+        $slideRight.removeClass("disabled");
+        return false;
+    }
+}
+
 function updateSlider(direction) {
     $slideContent.empty();
     
@@ -268,6 +282,9 @@ function buildRepresentative(representative) {
 }
 
 function slide(direction) {
+    if (blocked) {
+        blocked = checkBlocked();
+    }
     if (!blocked) {
         blocked = true;
         
@@ -282,7 +299,7 @@ function slide(direction) {
 
         setTimeout(function () {
             updateSlider(direction);
-            blocked = false;
+            blocked = checkBlocked();
         }, 300);
     }
 }
