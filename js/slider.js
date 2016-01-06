@@ -80,6 +80,8 @@ function setListeners() {
         $("#todo").text(jsonResolve(teams[representative.team].todo, representative))
                   .attr("class", representative.team);
         
+        $("#legalNotice").html("Portrait &copy; " + representative.copyright);
+        
         $formMail = modal.find("#formMail");
         if (representative.mail) {
             $formMail.removeClass("hidden");
