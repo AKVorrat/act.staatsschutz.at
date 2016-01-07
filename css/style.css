@@ -67,7 +67,7 @@ main {
     position: relative;
 }
 
-main p:last-of-type {
+p:last-of-type {
     margin: 0;
 }
 

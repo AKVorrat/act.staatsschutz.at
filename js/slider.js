@@ -342,10 +342,5 @@ function build_modal_dialog (event) {
         $formWeb.attr("href", "");
     }
 
-    if (representative.gender === 'female') {
-        $('#teamNotice').html('Du hast von dieser Abgeordneten eine Rückmeldung bekommen oder gar ihre Meinung geändert? Dann <a href="mailto:office@akvorrat.at?subject=act.staatsschutz.at">teile uns das bitte mit</a>.');
-    }
-    else {
-        $('#teamNotice').html('Du hast von diesem Abgeordneten eine Rückmeldung bekommen oder gar seine Meinung geändert? Dann <a href="mailto:office@akvorrat.at?subject=act.staatsschutz.at">teile uns das bitte mit</a>.');
-    }
+    $("#contactAnnotation").html(jsonResolve("Du hast von %002% %LASTNAME% eine Rückmeldung bekommen oder gar %060% Meinung geändert? <a href='mailto:office@akvorrat.at?subject=act.staatsschutz.at'>Teile uns das bitte mit</a>.", representative));
 }
