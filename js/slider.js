@@ -88,7 +88,7 @@ function setListeners() {
             $formMail.attr("href", format.mail.url.replace("%MAIL%", representative.mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
         } else if (parties[representative.party].mail) {
             $formMail.removeClass("hidden");
-            $formMail.attr("href", parties[representative.party].mail);
+            $formMail.attr("href", "mailto:" + parties[representative.party].mail);
         } else {
             $formMail.addClass("hidden");
             $formMail.attr("href", "");
