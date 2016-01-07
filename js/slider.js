@@ -59,7 +59,6 @@ function setListeners() {
         adaptSearch();
     });
     $("#contactModal").on("show.bs.modal", build_modal_dialog);
-
 }
 
 function getMPimg (representative, inArray) {
@@ -277,7 +276,7 @@ function build_modal_dialog (event) {
         $formMail.attr("href", format.mail.url.replace("%MAIL%", representative.mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
     } else if (parties[representative.party].mail) {
         $formMail.removeClass("hidden");
-        $formMail.attr("href", parties[representative.party].mail);
+        $formMail.attr("href", "mailto:" + parties[representative.party].mail);
     } else {
         $formMail.addClass("hidden");
         $formMail.attr("href", "");
@@ -286,7 +285,7 @@ function build_modal_dialog (event) {
     $formPhone = modal.find("#formPhone").parent();
     if (representative.phone) {
         $formPhone.removeClass("hidden");
-        $formPhone.attr("href", representative.phone);
+        $formPhone.attr("href", "tel:" + representative.phone);
     } else if (parties[representative.party].phone) {
         $formPhone.removeClass("hidden");
         $formPhone.attr("href", "tel:" + parties[representative.party].phone);
@@ -298,7 +297,7 @@ function build_modal_dialog (event) {
     $formMobile = modal.find("#formMobile").parent();
     if (representative.mobile) {
         $formMobile.removeClass("hidden");
-        $formMobile.attr("href", representative.mobile);
+        $formMobile.attr("href", "tel:" + representative.mobile);
     } else {
         $formMobile.addClass("hidden");
         $formMobile.attr("href", "");
@@ -307,7 +306,7 @@ function build_modal_dialog (event) {
     $formFax = modal.find("#formFax").parent();
     if (representative.fax) {
         $formFax.removeClass("hidden");
-        $formFax.attr("href", representative.fax);
+        $formFax.attr("href", "fax:" + representative.fax);
     } else if (parties[representative.party].fax) {
         $formFax.removeClass("hidden");
         $formFax.attr("href", "fax:" + parties[representative.party].fax);
