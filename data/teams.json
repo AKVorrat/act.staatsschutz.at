@@ -3,7 +3,7 @@
     "name": "Team Bürgerrechte",
     "color": "#2CBC9B",
     "introduction": "%002% %LASTNAME% sind Deine Bürgerrechte wichtig. Daher setzt %050% sich gegen das Staatsschutzgesetz ein.",
-    "todo": "Hilf mit, %051% dabei unterstützen!"
+    "todo": "Hilf mit, %051% dabei zu unterstützen!"
   },
   "spy": {
     "name": "Team Überwachung",
@@ -15,6 +15,6 @@
     "name": "Unbekanntes Team",
     "color": "#2E2E50",
     "introduction": "%001% %LASTNAME% hat sich zum Staatsschutzgesetz noch nicht geäußert, während andere das Ruder in die Hand nehmen.",
-    "todo": "Hilf mit, %051% dazu bekommen, Stellung zu beziehen!"
+    "todo": "Hilf mit, %051% dazu zu bekommen, Stellung zu beziehen!"
   }
 }}
