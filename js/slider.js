@@ -97,7 +97,7 @@ function setListeners() {
         $formPhone = modal.find("#formPhone").parent();
         if (representative.phone) {
             $formPhone.removeClass("hidden");
-            $formPhone.attr("href", representative.phone);
+            $formPhone.attr("href", "tel:" + representative.phone);
         } else if (parties[representative.party].phone) {
             $formPhone.removeClass("hidden");
             $formPhone.attr("href", "tel:" + parties[representative.party].phone);
@@ -109,7 +109,7 @@ function setListeners() {
         $formMobile = modal.find("#formMobile").parent();
         if (representative.mobile) {
             $formMobile.removeClass("hidden");
-            $formMobile.attr("href", representative.mobile);
+            $formMobile.attr("href", "tel:" + representative.mobile);
         } else {
             $formMobile.addClass("hidden");
             $formMobile.attr("href", "");
@@ -118,7 +118,7 @@ function setListeners() {
         $formFax = modal.find("#formFax").parent();
         if (representative.fax) {
             $formFax.removeClass("hidden");
-            $formFax.attr("href", representative.fax);
+            $formFax.attr("href", "fax:" + representative.fax);
         } else if (parties[representative.party].fax) {
             $formFax.removeClass("hidden");
             $formFax.attr("href", "fax:" + parties[representative.party].fax);
