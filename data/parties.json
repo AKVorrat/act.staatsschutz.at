@@ -2,7 +2,7 @@
   "spoe": {
     "name": "Sozialdemokratische Partei Österreichs",
     "short": "SPÖ",
-    "color": "#FF0000",
+    "color": "#F00",
     "website": "https://www.spoe.at/",
     "mail": "klub@spoe.at",
     "phone": "+431401103471",
@@ -11,7 +11,7 @@
   "oevp": {
     "name": "Österreichische Volkspartei",
     "short": "ÖVP",
-    "color": "#000000",
+    "color": "#000",
     "website": "https://www.oevp.at/",
     "mail": "office@oevpklub.at",
     "phone": "+431401104408",
