@@ -21,7 +21,7 @@ header {
     z-index: 1;
     padding: 1em;
     text-align: center;
-    background: #333;
+    background: #003b4c;
     overflow: hidden;
     position: relative;
 }
@@ -32,8 +32,13 @@ header {
 }
 
 header h1 {
-    margin: 0 0 .35em;
+    margin: 0px;
     font-weight: bold;
+}
+
+header h2 {
+    margin: 0.25em 0px;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 header a img {
