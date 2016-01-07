@@ -9,7 +9,7 @@
     "name": "Team Überwachung",
     "color": "#E74B4C",
     "introduction": "%001% %LASTNAME% will Dich überwachen. Daher setzt %050% sich für das Staatsschutzgesetz ein.",
-    "todo": "Hilf mit, %051% umstimmen!"
+    "todo": "Hilf mit, %051% umzustimmen!"
   },
   "unknown": {
     "name": "Unbekanntes Team",
