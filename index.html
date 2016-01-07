@@ -20,19 +20,19 @@
     </head>
 
     <body>
-        <header class="fluid-container">
+        <header>
             <h1>Kontaktiere Deine Abgeordneten:</h1>
             <h2>Stoppt das Staatsschutzgesetz!</h2>
             <img src="./img/staatsschutz.png" alt="Staatsschutz Logo" />
             <form id="backlink" method="get" action="https://www.staatsschutz.at" class="hidden-xs hidden-sm">
                 <button type="submit" class="btn btn-default" aria-label="BackToPetition">
-                    <span>&blacktriangleleft; Zurück zur Petition</span>
+                    <span>&blacktriangleleft; Zur&uuml;ck zur Petition</span>
                 </button>
             </form>
             <a href="https://www.akvorrat.at/"><img src="./img/akvorrat.png" alt="AKVorrat Logo" class="hidden-xs hidden-sm" /></a>
         </header>
     
-        <main class="fluid-container">            
+        <main>
             <img class="background noSelect hidden-xs hidden-sm" src="./img/austria.gif" alt="Österreich" />
             
             <div id="settings" class="container">
@@ -86,17 +86,12 @@
                 <div id="slideRight" class="slideSide disabled noSelect" onclick="slide(true)">&rang;</div>
             </div>
 
-            <div id="disclaimer">
-                <h5>Disclaimer</h5>
-                <p>Die Team-Zuordnung der Abgeordneten für oder gegen das geplante Polizeiliche Staatsschutzgesetz basiert auf ihren öffentlichen Aussagen und der Einschätzung des AKVorrat. Sollten diese Angaben nicht aktuell sein, nehmen Sie bitte Kontakt mit uns auf.</p>
-            </div>
-
+            <p id="disclaimer" class="text-center hidden-xs hidden-sm">Die Einsch&auml;tzung des Standpunktes der Abgeordneten f&uuml;r oder gegen das geplante Polizeiliche Staatsschutzgesetz basiert auf deren &ouml;ffentlichen Aussagen und dem Meinungsbild des Arbeitskreises Vorratsdaten &Ouml;sterreich. Sollten diese Angaben nicht zutreffen oder an Aktualit&auml;t verloren haben, nehmen Sie bitte Kontakt auf.
             <p class="text-center"><a href="https://akvorrat.at/kontakt">Kontakt / Impressum / Presse / Datenschutz</a></p>
         </main>
         
-        <footer class="fluid-container">
-        <p>Diese Kampagne wird unterst&uuml;tzt von</p>
-        <div class="container-fluid">
+        <footer class="container-fluid">
+            <p>Diese Kampagne wird unterst&uuml;tzt von</p>
             <div class="row">
                 <div class="col-xs-12 col-md-6">
                     <div class="row">
@@ -116,7 +111,6 @@
                 </div>
             </div>
             <p><a href="https://akvorrat.at/kontakt">Kontaktieren Sie uns, wenn Ihre Organisation die Aktion auch unterst&uuml;tzen m&ouml;chte.</a></p>
-        </div>
         </footer>
         
         <!--START contactModal-->
@@ -133,16 +127,16 @@
                     </div>
                     <div class="modal-body">
                         <p><span id="introduction"></span><span id="todo"></span></p>
-                        <div id="contactButtons" class="container-fluid text-center">
+                        <div id="contactLinks" class="text-center">
                             <a href="mailto:info@akvorrat.at" class="hidden"><div id="formMail">
                                 <img class="contactIcon mail" src="" alt="" />
                                 <span>E-Mail</span>
                             </div></a>
-                            <a href="tel:+436801238611" class="hidden"><div id="formPhone">
+                            <a href="tel:" class="hidden"><div id="formPhone">
                                 <img class="contactIcon phone" src="" alt="" />
                                 <span>Telefon</span>
                             </div></a>
-                            <a href="tel:+436801238611" class="hidden"><div id="formMobile">
+                            <a href="tel:" class="hidden"><div id="formMobile">
                                 <img class="contactIcon mobile" src="" alt="" />
                                 <span>Handy</span>
                             </div></a>
@@ -150,22 +144,22 @@
                                 <img class="contactIcon fax" src="" alt="" />
                                 <span>Fax</span>
                             </div></a>
-                            <a href="https://twitter.com/AKVorrat_at" class="hidden"><div id="formTwitter">
+                        </div>
+                        <div id="contactButtons" class="container-fluid text-center">
+                            <a href="https://twitter.com/AKVorrat_at" target="_blank" class="hidden"><div id="formTwitter">
                                 <img class="contactIcon twitter" src="" alt="" />
                                 <span>Twitter</span>
                             </div></a>
-                            <a href="https://facebook.com/akvorratat" class="hidden"><div id="formFacebook">
+                            <a href="https://facebook.com/akvorratat" target="_blank" class="hidden"><div id="formFacebook">
                                 <img class="contactIcon facebook" src="" alt="" />
                                 <span>Facebook</span>
                             </div></a>
-                            <a href="https://akvorrat.at/" class="hidden"><div id="formWeb">
+                            <a href="https://akvorrat.at/" target="_blank" class="hidden"><div id="formWeb">
                                 <img class="contactIcon web" src="" alt="" />
                                 <span>Web</span>
                             </div></a>
                         </div>
-                        <span style="text-align: center; padding: 0 2em 0 2em;">
-                            Du hast von diesem Abgeordneten eine Rückmeldung bekommen oder gar seine Meinung geändert? Dann <a href="mailto:office@akvorrat.at?subject=act.staatsschutz.at">teile uns das bitte mit</a>.
-                        </span>
+                        <p id="contactAnnotation" class="text-center">Du hast von diesem Abgeordneten eine Rückmeldung bekommen oder gar seine Meinung geändert? Dann <a href="mailto:office@akvorrat.at?subject=act.staatsschutz.at">teile uns das bitte mit</a>.</p>
                     </div>
                     <div class="modal-footer">
                         <span id="legalNotice">Portrait &copy; Parlamentsdirektion / PHOTO SIMONIS</span>

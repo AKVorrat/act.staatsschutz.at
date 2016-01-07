@@ -7,8 +7,8 @@
   },
   "twitter": {
     "name": "Twitter",
-    "url": "https://www.twitter.com/%TWITTER%",
-    "message": "Sehr %100% %001% %LASTNAME%, ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
+    "url": "https://twitter.com/home?status=.@%TWITTER%%MESSAGE%",
+    "message": " Transparenter Staat statt gläserner Mensch! https://www.staatsschutz.at #staatsschutz"
   },
   "facebook": {
     "name": "Facebook",
