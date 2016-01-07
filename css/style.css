@@ -54,7 +54,7 @@ header #backlink {
 }
 
 footer {
-    margin-top: 2em;
+    margin-top: 1em;
     border-top: 4px #EEE solid;
 }
 
@@ -65,6 +65,10 @@ footer img {
 
 main {
     position: relative;
+}
+
+main p:last-of-type {
+    margin: 0;
 }
 
 .noSelect {

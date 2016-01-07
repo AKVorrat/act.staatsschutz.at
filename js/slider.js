@@ -1,5 +1,5 @@
-var searchParties = {"spoe": true, "oevp": true, "fpoe": true, "gruene": true, "neos": true, "frank": true, "none": false};
-var searchTeams = {"liberty": true, "spy": true, "unknown": true};
+var searchParties = {"spoe": false, "oevp": false, "fpoe": false, "gruene": false, "neos": false, "frank": false, "none": false};
+var searchTeams = {"liberty": false, "spy": false, "unknown": false};
 var representatives, format, parties, teams, genders;
 var blocked = true;
 var filteredRepresentatives = [], steps = [], currentStep = -1;
@@ -82,67 +82,76 @@ function setListeners() {
         
         $("#legalNotice").html("Portrait &copy; " + representative.copyright);
         
-        $formMail = modal.find("#formMail");
+        $formMail = modal.find("#formMail").parent();
         if (representative.mail) {
             $formMail.removeClass("hidden");
-            $formMail.attr("action", format.mail.url.replace("%MAIL%", representative.mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
+            $formMail.attr("href", format.mail.url.replace("%MAIL%", representative.mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
         } else if (parties[representative.party].mail) {
             $formMail.removeClass("hidden");
-            $formMail.attr("action", parties[representative.party].mail);
+            $formMail.attr("href", parties[representative.party].mail);
         } else {
             $formMail.addClass("hidden");
-            $formMail.attr("action", "");
+            $formMail.attr("href", "");
         }
         
-        $formPhone = modal.find("#formPhone");
+        $formPhone = modal.find("#formPhone").parent();
         if (representative.phone) {
             $formPhone.removeClass("hidden");
-            $formPhone.attr("action", representative.phone);
+            $formPhone.attr("href", representative.phone);
         } else if (parties[representative.party].phone) {
             $formPhone.removeClass("hidden");
-            $formPhone.attr("action", "tel:" + parties[representative.party].phone.replace(new RegExp(" ", "g"), ""));
+            $formPhone.attr("href", "tel:" + parties[representative.party].phone);
         } else {
             $formPhone.addClass("hidden");
-            $formPhone.attr("action", "");
+            $formPhone.attr("href", "");
         }
         
-        $formFax = modal.find("#formFax");
+        $formMobile = modal.find("#formMobile").parent();
+        if (representative.mobile) {
+            $formMobile.removeClass("hidden");
+            $formMobile.attr("href", representative.mobile);
+        } else {
+            $formMobile.addClass("hidden");
+            $formMobile.attr("href", "");
+        }
+        
+        $formFax = modal.find("#formFax").parent();
         if (representative.fax) {
             $formFax.removeClass("hidden");
-            $formFax.attr("action", representative.fax);
+            $formFax.attr("href", representative.fax);
         } else if (parties[representative.party].fax) {
             $formFax.removeClass("hidden");
-            $formFax.attr("action", "fax:" + parties[representative.party].fax.replace(new RegExp(" ", "g"), ""));
+            $formFax.attr("href", "fax:" + parties[representative.party].fax);
         } else {
             $formFax.addClass("hidden");
-            $formFax.attr("action", "");
+            $formFax.attr("href", "");
         }
         
-        $formTwitter = modal.find("#formTwitter");
+        $formTwitter = modal.find("#formTwitter").parent();
         if (representative.twitter) {
             $formTwitter.removeClass("hidden");
-            $formTwitter.attr("action", format.twitter.url.replace("%TWITTER%", representative.twitter));
+            $formTwitter.attr("href", format.twitter.url.replace("%TWITTER%", representative.twitter));
         } else {
             $formTwitter.addClass("hidden");
-            $formTwitter.attr("action", "");
+            $formTwitter.attr("href", "");
         }
         
-        $formFacebook = modal.find("#formFacebook");
+        $formFacebook = modal.find("#formFacebook").parent();
         if (representative.facebook) {
             $formFacebook.removeClass("hidden");
-            $formFacebook.attr("action", format.facebook.url.replace("%FACEBOOK%", representative.facebook));
+            $formFacebook.attr("href", format.facebook.url.replace("%FACEBOOK%", representative.facebook));
         } else {
             $formFacebook.addClass("hidden");
-            $formFacebook.attr("action", "");
+            $formFacebook.attr("href", "");
         }
         
-        $formWeb = modal.find("#formWeb");
+        $formWeb = modal.find("#formWeb").parent();
         if (representative.website) {
             $formWeb.removeClass("hidden");
-            $formWeb.attr("action", representative.website);
+            $formWeb.attr("href", representative.website);
         } else {
             $formWeb.addClass("hidden");
-            $formWeb.attr("action", "");
+            $formWeb.attr("href", "");
         }
     })
 }
@@ -227,8 +236,16 @@ function updateRepresentatives() {
     return changed;
 }
 
+function emptySearch(dict) {
+    var r = true;
+    for (entry in dict)
+        r = r && ! dict[entry];
+    return r;
+}
+
 function matchSettings(representative) {
-    return searchParties[representative.party] && searchTeams[representative.team];
+    return (emptySearch(searchParties) || searchParties[representative.party]) &&
+           (emptySearch(searchTeams) || searchTeams[representative.team]);
 }
 
 function checkBlocked() {
