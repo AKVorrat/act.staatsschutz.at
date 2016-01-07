@@ -128,19 +128,29 @@ main .background {
     vertical-align: middle;
 }
 
-#contactButtons a {
+#contactLinks {
+    margin-bottom: 1em;
+}
+
+#contactButtons a,
+#contactLinks a {
     color: #EEE;
 }
 
-#contactButtons a:hover {
+#contactButtons a:hover,
+#contactLinks a:hover {
     text-decoration: none;
     cursor: pointer;
 }
 
-#contactButtons div {
+#contactButtons div,
+#contactLinks div {
     font-size: larger;
-    padding: 0.3em 0.5em;
     margin-bottom: 0.5em;
+}
+
+#contactButtons div {
+    padding: 0.3em 0.5em;
     border: 1px solid rgba(255, 255, 255, 0.5);
     display: inline-block;
 }
