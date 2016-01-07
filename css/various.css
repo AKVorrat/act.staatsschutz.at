@@ -6,6 +6,13 @@
     margin-bottom: 1em;
 }
 
+#legalNotice {
+    font-size: smaller;
+    text-align: left;
+    float: left;
+    color: #555;
+}
+
 main .background {
     position: absolute;
     opacity: 0.1;
