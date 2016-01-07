@@ -3,16 +3,16 @@
     "name": "E-Mail",
     "url": "mailto:%MAIL%?subject=%SUBJECT%&body=%MESSAGE%",
     "subject": "Staatsschutzgesetz",
-    "message": "Sehr %004% %001% %LASTNAME%! Ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
+    "message": "Sehr %100% %001% %LASTNAME%! Ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
   },
   "twitter": {
     "name": "Twitter",
     "url": "https://www.twitter.com/%TWITTER%",
-    "message": "Sehr %004% %001% %LASTNAME%, ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
+    "message": "Sehr %100% %001% %LASTNAME%, ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
   },
   "facebook": {
     "name": "Facebook",
     "url": "https://www.facebook.com/%FACEBOOK%",
-    "message": "Sehr %004% %001% %LASTNAME%, ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
+    "message": "Sehr %100% %001% %LASTNAME%, ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
   }
 }}
