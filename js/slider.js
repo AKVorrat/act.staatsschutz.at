@@ -1,5 +1,5 @@
 var searchParties = {"spoe": true, "oevp": true, "fpoe": true, "gruene": true, "neos": true, "frank": true, "none": false};
-var searchTeams = {"liberty": true, "spy": true, "unknown": false};
+var searchTeams = {"liberty": true, "spy": true, "unknown": true};
 var representatives, format, parties, teams, genders;
 var blocked = true;
 var filteredRepresentatives = [], steps = [], currentStep = -1;

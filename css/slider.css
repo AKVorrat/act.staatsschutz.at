@@ -138,3 +138,11 @@
         transform: translate(0,0);
     }
 }
+
+#settings .btn-default.active {
+    background-color: #006A87 !important;
+}
+
+#settings .btn-default:hover {
+    background-color: #009BC5 !important;
+}
