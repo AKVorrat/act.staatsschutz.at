@@ -58,102 +58,7 @@ function setListeners() {
         searchTeams[$(this).attr("id")] = !searchTeams[$(this).attr("id")];
         adaptSearch();
     });
-    $("#contactModal").on("show.bs.modal", function (event) {
-        var button = $(event.relatedTarget);
-        var representative = button.data("representative");
-        representative = representatives[representative];
-        var modal = $(this);
-        var $contactButtons = $("#contactButtons");
-        var MPimg, MPname;
-            
-        inArray = representatives.indexOf(representative);
-        MPimg = getMPimg(representative, inArray);
-        MPname = getMPname(representative);
-        
-        $("#repColor").attr("class", representative.team + "BG");
-        modal.find(".modal-header h2").text(MPname);
-        $("#repImg").attr("src", MPimg)
-                    .attr("style", "border-color: " + teams[representative.team].color + ";");
-        $("#teamSign").text(teams[representative.team].name)
-                      .attr("style", "background: " + teams[representative.team].color + ";");
-        $("#introduction").text(jsonResolve(teams[representative.team].introduction, representative) + " ");
-        $("#todo").text(jsonResolve(teams[representative.team].todo, representative))
-                  .attr("class", representative.team);
-        
-        $("#legalNotice").html("Portrait &copy; " + representative.copyright);
-        
-        $formMail = modal.find("#formMail").parent();
-        if (representative.mail) {
-            $formMail.removeClass("hidden");
-            $formMail.attr("href", format.mail.url.replace("%MAIL%", representative.mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
-        } else if (parties[representative.party].mail) {
-            $formMail.removeClass("hidden");
-            $formMail.attr("href", "mailto:" + parties[representative.party].mail);
-        } else {
-            $formMail.addClass("hidden");
-            $formMail.attr("href", "");
-        }
-        
-        $formPhone = modal.find("#formPhone").parent();
-        if (representative.phone) {
-            $formPhone.removeClass("hidden");
-            $formPhone.attr("href", "tel:" + representative.phone);
-        } else if (parties[representative.party].phone) {
-            $formPhone.removeClass("hidden");
-            $formPhone.attr("href", "tel:" + parties[representative.party].phone);
-        } else {
-            $formPhone.addClass("hidden");
-            $formPhone.attr("href", "");
-        }
-        
-        $formMobile = modal.find("#formMobile").parent();
-        if (representative.mobile) {
-            $formMobile.removeClass("hidden");
-            $formMobile.attr("href", "tel:" + representative.mobile);
-        } else {
-            $formMobile.addClass("hidden");
-            $formMobile.attr("href", "");
-        }
-        
-        $formFax = modal.find("#formFax").parent();
-        if (representative.fax) {
-            $formFax.removeClass("hidden");
-            $formFax.attr("href", "fax:" + representative.fax);
-        } else if (parties[representative.party].fax) {
-            $formFax.removeClass("hidden");
-            $formFax.attr("href", "fax:" + parties[representative.party].fax);
-        } else {
-            $formFax.addClass("hidden");
-            $formFax.attr("href", "");
-        }
-        
-        $formTwitter = modal.find("#formTwitter").parent();
-        if (representative.twitter) {
-            $formTwitter.removeClass("hidden");
-            $formTwitter.attr("href", format.twitter.url.replace("%TWITTER%", representative.twitter));
-        } else {
-            $formTwitter.addClass("hidden");
-            $formTwitter.attr("href", "");
-        }
-        
-        $formFacebook = modal.find("#formFacebook").parent();
-        if (representative.facebook) {
-            $formFacebook.removeClass("hidden");
-            $formFacebook.attr("href", format.facebook.url.replace("%FACEBOOK%", representative.facebook));
-        } else {
-            $formFacebook.addClass("hidden");
-            $formFacebook.attr("href", "");
-        }
-        
-        $formWeb = modal.find("#formWeb").parent();
-        if (representative.website) {
-            $formWeb.removeClass("hidden");
-            $formWeb.attr("href", representative.website);
-        } else {
-            $formWeb.addClass("hidden");
-            $formWeb.attr("href", "");
-        }
-    })
+    $("#contactModal").on("show.bs.modal", build_modal_dialog);
 }
 
 function getMPimg (representative, inArray) {
@@ -339,4 +244,114 @@ function slide(direction) {
             blocked = checkBlocked();
         }, 300);
     }
+}
+
+function build_modal_dialog (event) {
+    var button = $(event.relatedTarget);
+    var representative = button.data("representative");
+    representative = representatives[representative];
+    var modal = $(this);
+    var $contactButtons = $("#contactButtons");
+    var MPimg, MPname;
+        
+    inArray = representatives.indexOf(representative);
+    MPimg = getMPimg(representative, inArray);
+    MPname = getMPname(representative);
+    
+    $("#repColor").attr("class", representative.team + "BG");
+    modal.find(".modal-header h2").text(MPname);
+    $("#repImg").attr("src", MPimg)
+                .attr("style", "border-color: " + teams[representative.team].color + ";");
+    $("#teamSign").text(teams[representative.team].name)
+                  .attr("style", "background: " + teams[representative.team].color + ";");
+    $("#introduction").text(jsonResolve(teams[representative.team].introduction, representative) + " ");
+    $("#todo").text(jsonResolve(teams[representative.team].todo, representative))
+              .attr("class", representative.team);
+    
+    $("#legalNotice").html("Portrait &copy; " + representative.copyright);
+    
+    $formMail = modal.find("#formMail").parent();
+    if (representative.mail) {
+        $formMail.removeClass("hidden");
+        $formMail.attr("href", format.mail.url.replace("%MAIL%", representative.mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
+        $formMail.find("span").text(representative.mail);
+    } else if (parties[representative.party].mail) {
+        $formMail.removeClass("hidden");
+        $formMail.attr("href", "mailto:" + parties[representative.party].mail);
+        $formMail.find("span").text(parties[representative.party].mail);
+    } else {
+        $formMail.addClass("hidden");
+        $formMail.attr("href", "");
+        $formMail.find("span").text("");
+    }
+    
+    $formPhone = modal.find("#formPhone").parent();
+    if (representative.phone) {
+        $formPhone.removeClass("hidden");
+        $formPhone.attr("href", "tel:" + representative.phone);
+        $formPhone.find("span").text(representative.phone);
+    } else if (parties[representative.party].phone) {
+        $formPhone.removeClass("hidden");
+        $formPhone.attr("href", "tel:" + parties[representative.party].phone);
+        $formPhone.find("span").text(parties[representative.party].phone);
+    } else {
+        $formPhone.addClass("hidden");
+        $formPhone.attr("href", "");
+        $formPhone.find("span").text("");
+    }
+    
+    $formMobile = modal.find("#formMobile").parent();
+    if (representative.mobile) {
+        $formMobile.removeClass("hidden");
+        $formMobile.attr("href", "tel:" + representative.mobile);
+        $formMobile.find("span").text(representative.mobile);
+    } else {
+        $formMobile.addClass("hidden");
+        $formMobile.attr("href", "");
+        $formMobile.find("span").text("");
+    }
+    
+    $formFax = modal.find("#formFax").parent();
+    if (representative.fax) {
+        $formFax.removeClass("hidden");
+        $formFax.attr("href", "fax:" + representative.fax);
+        $formFax.find("span").text(representative.fax);
+    } else if (parties[representative.party].fax) {
+        $formFax.removeClass("hidden");
+        $formFax.attr("href", "fax:" + parties[representative.party].fax);
+        $formFax.find("span").text(parties[representative.party].fax);
+    } else {
+        $formFax.addClass("hidden");
+        $formFax.attr("href", "");
+        $formFax.find("span").text("");
+    }
+    
+    $formTwitter = modal.find("#formTwitter").parent();
+    if (representative.twitter) {
+        $formTwitter.removeClass("hidden");
+        $formTwitter.attr("href", format.twitter.url.replace("%TWITTER%", representative.twitter).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.twitter.message, representative))));
+    } else {
+        $formTwitter.addClass("hidden");
+        $formTwitter.attr("href", "");
+    }
+    
+    $formFacebook = modal.find("#formFacebook").parent();
+    if (representative.facebook) {
+        $formFacebook.removeClass("hidden");
+        $formFacebook.attr("href", format.facebook.url.replace("%FACEBOOK%", representative.facebook));
+    } else {
+        $formFacebook.addClass("hidden");
+        $formFacebook.attr("href", "");
+    }
+    
+    $formWeb = modal.find("#formWeb").parent();
+    if (representative.website) {
+        $formWeb.removeClass("hidden");
+        $formWeb.attr("href", representative.website);
+    } else {
+        $formWeb.addClass("hidden");
+        $formWeb.attr("href", "");
+    }
+
+    $("#contactAnnotation").html(jsonResolve("Du hast von %002% %LASTNAME% eine Rückmeldung bekommen oder gar %060% Meinung geändert? <a href='mailto:office@akvorrat.at?subject=act.staatsschutz.at'>Teile uns das bitte mit</a>.", representative));
 }
