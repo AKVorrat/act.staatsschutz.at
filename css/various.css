@@ -37,6 +37,15 @@
     background: linear-gradient(to bottom, rgba(0,19,25,1) 0%, rgba(0,39,51,1) 50%, rgba(0,58,76,1) 51%, rgba(0,39,51,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
+#disclaimer {
+    text-align: right;
+    width: 30%;
+    margin-left: auto;
+    margin-right: 1.3em;
+    font-size: smaller;
+    color: #555;
+}
+
 #legalNotice {
     font-size: smaller;
     text-align: left;
