@@ -120,9 +120,26 @@ main .background {
     vertical-align: middle;
 }
 
+#contactButtons a {
+    color: #EEE;
+}
+
+#contactButtons a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#contactButtons div {
+    font-size: larger;
+    padding: 0.3em 0.5em;
+    margin-bottom: 0.5em;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: inline-block;
+}
+
 .contactIcon {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     margin: 0px 3px 0px -2px;
     background-size: contain;
     display: inline-block;
@@ -132,7 +149,7 @@ main .background {
     background-image: url(../img/share/mail.png);
 }
 
-form:hover .contactIcon.mail {
+#formMail:hover .contactIcon.mail {
     background-image: url(../img/share/mail-hover.png);
 }
 
@@ -140,7 +157,15 @@ form:hover .contactIcon.mail {
     background-image: url(../img/share/phone.png);
 }
 
-form:hover .contactIcon.phone {
+#formPhone:hover .contactIcon.phone {
+    background-image: url(../img/share/phone-hover.png);
+}
+
+.contactIcon.mobile {
+    background-image: url(../img/share/phone.png);
+}
+
+#formMobile:hover .contactIcon.mobile {
     background-image: url(../img/share/phone-hover.png);
 }
 
@@ -148,25 +173,25 @@ form:hover .contactIcon.phone {
     background-image: url(../img/share/fax.png);
 }
 
-form:hover .contactIcon.fax {
+#formFax:hover .contactIcon.fax {
     background-image: url(../img/share/fax-hover.png);
 }
 
 .contactIcon.twitter {
-    width: 10px;
+    width: 12.5px;
     background-image: url(../img/share/twitter.png);
 }
 
-form:hover .contactIcon.twitter {
+#formTwitter:hover .contactIcon.twitter {
     background-image: url(../img/share/twitter-hover.png);
 }
 
 .contactIcon.facebook {
-    width: 10px;
+    width: 12.5px;
     background-image: url(../img/share/facebook.png);
 }
 
-form:hover .contactIcon.facebook {
+#formFacebook:hover .contactIcon.facebook {
     background-image: url(../img/share/facebook-hover.png);
 }
 
@@ -174,6 +199,6 @@ form:hover .contactIcon.facebook {
     background-image: url(../img/share/web.png);
 }
 
-form:hover .contactIcon.web {
+#formWeb:hover .contactIcon.web {
     background-image: url(../img/share/web-hover.png);
 }
