@@ -1,5 +1,5 @@
-var searchParties = {"spoe": true, "oevp": true, "fpoe": true, "gruene": true, "neos": true, "frank": true, "none": false};
-var searchTeams = {"liberty": true, "spy": true, "unknown": true};
+var searchParties = {"spoe": false, "oevp": false, "fpoe": false, "gruene": false, "neos": false, "frank": false, "none": false};
+var searchTeams = {"liberty": false, "spy": false, "unknown": false};
 var representatives, format, parties, teams, genders;
 var blocked = true;
 var filteredRepresentatives = [], steps = [], currentStep = -1;
@@ -236,8 +236,16 @@ function updateRepresentatives() {
     return changed;
 }
 
+function emptySearch(dict) {
+    var r = true;
+    for (entry in dict)
+        r = r && ! dict[entry];
+    return r;
+}
+
 function matchSettings(representative) {
-    return searchParties[representative.party] && searchTeams[representative.team];
+    return (emptySearch(searchParties) || searchParties[representative.party]) &&
+           (emptySearch(searchTeams) || searchTeams[representative.team]);
 }
 
 function checkBlocked() {
