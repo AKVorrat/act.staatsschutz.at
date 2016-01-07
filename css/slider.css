@@ -1,12 +1,12 @@
 #slider {
     width: 100%;
+    margin: 2em 0px;
     color: #FFF;
     text-align: center;
     display: table;
 }
 
 #slideCenter {
-    padding: 1.5em;
     display: table-cell;
     vertical-align: middle;
     overflow: hidden;
@@ -137,12 +137,4 @@
         opacity: 1;
         transform: translate(0,0);
     }
-}
-
-#settings .btn-default.active {
-    background-color: #006A87 !important;
-}
-
-#settings .btn-default:hover {
-    background-color: #009BC5 !important;
 }

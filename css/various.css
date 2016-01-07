@@ -2,8 +2,39 @@
     text-align: center;
 }
 
-#settings .row {
+#settings .row:first-of-type {
     margin-bottom: 1em;
+}
+
+#settings .btn {
+    background: -moz-linear-gradient(top, rgba(51,51,51,1) 0%, rgba(73,73,73,1) 50%, rgba(51,51,51,1) 51%, rgba(22,22,22,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(51,51,51,1) 0%,rgba(73,73,73,1) 50%,rgba(51,51,51,1) 51%,rgba(22,22,22,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(51,51,51,1) 0%,rgba(73,73,73,1) 50%,rgba(51,51,51,1) 51%,rgba(22,22,22,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+#settings .btn:hover {
+    -moz-box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+    -webkit-box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+#settings .btn:not(.active):hover {
+    background: -moz-linear-gradient(top, rgba(22,22,22,1) 0%, rgba(51,51,51,1) 50%, rgba(73,73,73,1) 51%, rgba(51,51,51,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(22,22,22,1) 0%, rgba(51,51,51,1) 50%, rgba(73,73,73,1) 51%, rgba(51,51,51,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(22,22,22,1) 0%, rgba(51,51,51,1) 50%, rgba(73,73,73,1) 51%, rgba(51,51,51,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+#settings .btn.active {
+    background: -moz-linear-gradient(top, rgba(0,39,51,1) 0%, rgba(0,58,76,1) 50%, rgba(0,39,51,1) 51%, rgba(0,19,25,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,39,51,1) 0%,rgba(0,58,76,1) 50%,rgba(0,39,51,1) 51%,rgba(0,19,25,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,39,51,1) 0%,rgba(0,58,76,1) 50%,rgba(0,39,51,1) 51%,rgba(0,19,25,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+#settings .btn.active:hover {
+    background: -moz-linear-gradient(top, rgba(0,19,25,1) 0%, rgba(0,39,51,1) 50%, rgba(0,58,76,1) 51%, rgba(0,39,51,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(0,19,25,1) 0%, rgba(0,39,51,1) 50%, rgba(0,58,76,1) 51%, rgba(0,39,51,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(0,19,25,1) 0%, rgba(0,39,51,1) 50%, rgba(0,58,76,1) 51%, rgba(0,39,51,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
 #legalNotice {
@@ -89,9 +120,26 @@ main .background {
     vertical-align: middle;
 }
 
+#contactButtons a {
+    color: #EEE;
+}
+
+#contactButtons a:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#contactButtons div {
+    font-size: larger;
+    padding: 0.3em 0.5em;
+    margin-bottom: 0.5em;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    display: inline-block;
+}
+
 .contactIcon {
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     margin: 0px 3px 0px -2px;
     background-size: contain;
     display: inline-block;
@@ -101,7 +149,7 @@ main .background {
     background-image: url(../img/share/mail.png);
 }
 
-form:hover .contactIcon.mail {
+#formMail:hover .contactIcon.mail {
     background-image: url(../img/share/mail-hover.png);
 }
 
@@ -109,7 +157,15 @@ form:hover .contactIcon.mail {
     background-image: url(../img/share/phone.png);
 }
 
-form:hover .contactIcon.phone {
+#formPhone:hover .contactIcon.phone {
+    background-image: url(../img/share/phone-hover.png);
+}
+
+.contactIcon.mobile {
+    background-image: url(../img/share/phone.png);
+}
+
+#formMobile:hover .contactIcon.mobile {
     background-image: url(../img/share/phone-hover.png);
 }
 
@@ -117,25 +173,25 @@ form:hover .contactIcon.phone {
     background-image: url(../img/share/fax.png);
 }
 
-form:hover .contactIcon.fax {
+#formFax:hover .contactIcon.fax {
     background-image: url(../img/share/fax-hover.png);
 }
 
 .contactIcon.twitter {
-    width: 10px;
+    width: 12.5px;
     background-image: url(../img/share/twitter.png);
 }
 
-form:hover .contactIcon.twitter {
+#formTwitter:hover .contactIcon.twitter {
     background-image: url(../img/share/twitter-hover.png);
 }
 
 .contactIcon.facebook {
-    width: 10px;
+    width: 12.5px;
     background-image: url(../img/share/facebook.png);
 }
 
-form:hover .contactIcon.facebook {
+#formFacebook:hover .contactIcon.facebook {
     background-image: url(../img/share/facebook-hover.png);
 }
 
@@ -143,6 +199,6 @@ form:hover .contactIcon.facebook {
     background-image: url(../img/share/web.png);
 }
 
-form:hover .contactIcon.web {
+#formWeb:hover .contactIcon.web {
     background-image: url(../img/share/web-hover.png);
 }
