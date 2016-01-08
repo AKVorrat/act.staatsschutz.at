@@ -318,7 +318,7 @@ function build_modal_dialog (event) {
     $formTwitter = modal.find("#formTwitter").parent();
     if (representative.twitter) {
         $formTwitter.removeClass("hidden");
-        $formTwitter.attr("href", format.twitter.url.replace("%TWITTER%", representative.twitter));
+        $formTwitter.attr("href", format.twitter.url.replace("%MESSAGE%", encodeURIComponent(format.twitter.message.replace("%TWITTER%", representative.twitter))));
     } else {
         $formTwitter.addClass("hidden");
         $formTwitter.attr("href", "");
