@@ -46,7 +46,7 @@
   },
   "frank": {
     "name": "Team Stronach für Österreich",
-    "short": "Stronach",
+    "short": "FRANK",
     "color": "#f8d323",
     "website": "http://www.teamstronach.at",
     "mail": "parlamentsklub@teamstronach.at",
@@ -55,7 +55,7 @@
   },
   "none": {
     "name": "Ohne Klubzugehörigkeit",
-    "short": "o.K.",
+    "short": "parteilos",
     "color": "#FFF",
     "website": "",
     "mail": "",
