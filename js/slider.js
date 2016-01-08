@@ -274,51 +274,62 @@ function build_modal_dialog (event) {
     if (representative.mail) {
         $formMail.removeClass("hidden");
         $formMail.attr("href", format.mail.url.replace("%MAIL%", representative.mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
+        $formMail.find("span").text(representative.mail);
     } else if (parties[representative.party].mail) {
         $formMail.removeClass("hidden");
         $formMail.attr("href", "mailto:" + parties[representative.party].mail);
+        $formMail.find("span").text(parties[representative.party].mail);
     } else {
         $formMail.addClass("hidden");
         $formMail.attr("href", "");
+        $formMail.find("span").text("");
     }
     
     $formPhone = modal.find("#formPhone").parent();
     if (representative.phone) {
         $formPhone.removeClass("hidden");
         $formPhone.attr("href", "tel:" + representative.phone);
+        $formPhone.find("span").text(representative.phone);
     } else if (parties[representative.party].phone) {
         $formPhone.removeClass("hidden");
         $formPhone.attr("href", "tel:" + parties[representative.party].phone);
+        $formPhone.find("span").text(parties[representative.party].phone);
     } else {
         $formPhone.addClass("hidden");
         $formPhone.attr("href", "");
+        $formPhone.find("span").text("");
     }
     
     $formMobile = modal.find("#formMobile").parent();
     if (representative.mobile) {
         $formMobile.removeClass("hidden");
         $formMobile.attr("href", "tel:" + representative.mobile);
+        $formMobile.find("span").text(representative.mobile);
     } else {
         $formMobile.addClass("hidden");
         $formMobile.attr("href", "");
+        $formMobile.find("span").text("");
     }
     
     $formFax = modal.find("#formFax").parent();
     if (representative.fax) {
         $formFax.removeClass("hidden");
         $formFax.attr("href", "fax:" + representative.fax);
+        $formFax.find("span").text(representative.fax);
     } else if (parties[representative.party].fax) {
         $formFax.removeClass("hidden");
         $formFax.attr("href", "fax:" + parties[representative.party].fax);
+        $formFax.find("span").text(parties[representative.party].fax);
     } else {
         $formFax.addClass("hidden");
         $formFax.attr("href", "");
+        $formFax.find("span").text("");
     }
     
     $formTwitter = modal.find("#formTwitter").parent();
     if (representative.twitter) {
         $formTwitter.removeClass("hidden");
-        $formTwitter.attr("href", format.twitter.url.replace("%MESSAGE%", encodeURIComponent(format.twitter.message.replace("%TWITTER%", representative.twitter))));
+        $formTwitter.attr("href", format.twitter.url.replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.twitter.message.replace("%TWITTER%", representative.twitter), representative))));
     } else {
         $formTwitter.addClass("hidden");
         $formTwitter.attr("href", "");
@@ -342,10 +353,5 @@ function build_modal_dialog (event) {
         $formWeb.attr("href", "");
     }
 
-    if (representative.gender === 'female') {
-        $('#teamNotice').html('Du hast von dieser Abgeordneten eine Rückmeldung bekommen oder gar ihre Meinung geändert? Dann <a href="mailto:office@akvorrat.at?subject=act.staatsschutz.at">teile uns das bitte mit</a>.');
-    }
-    else {
-        $('#teamNotice').html('Du hast von diesem Abgeordneten eine Rückmeldung bekommen oder gar seine Meinung geändert? Dann <a href="mailto:office@akvorrat.at?subject=act.staatsschutz.at">teile uns das bitte mit</a>.');
-    }
+    $("#contactAnnotation").html(jsonResolve("Du hast von %002% %LASTNAME% eine Rückmeldung bekommen oder gar %060% Meinung geändert? <a href='mailto:office@akvorrat.at?subject=act.staatsschutz.at'>Teile uns das bitte mit</a>.", representative));
 }

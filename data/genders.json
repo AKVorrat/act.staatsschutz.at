@@ -15,6 +15,14 @@
     "male": "ihn",
     "female": "sie"
   },
+  "060": {
+    "male": "seine",
+    "female": "ihre"
+  },
+  "075": {
+    "male": "diesem",
+    "female": "dieser"
+  },
   "100": {
     "male": "geehrter",
     "female": "geehrte"
