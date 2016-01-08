@@ -7,8 +7,8 @@
   },
   "twitter": {
     "name": "Twitter",
-    "url": "https://twitter.com/home?status=.@%TWITTER%%MESSAGE%",
-    "message": " Transparenter Staat statt gläserner Mensch! https://www.staatsschutz.at #staatsschutz"
+    "url": "https://twitter.com/intent/tweet?text=%MESSAGE%&source=webclient",
+    "message": ".@%TWITTER% Bitte stimmen Sie gegen die \"Mogelpackung\" des geplanten #Staatsschutzgesetz und für die Grundrechte der Bevölkerung!"
   },
   "facebook": {
     "name": "Facebook",
