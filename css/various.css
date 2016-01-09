@@ -37,12 +37,23 @@
     background: linear-gradient(to bottom, rgba(0,39,51,1) 0%, rgba(0,78,102,1) 50%, rgba(0,117,153,1) 51%, rgba(0,78,102,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 }
 
+#bullets {
+    text-align: center;
+    margin-top: 1em;
+}
+
+#bullets span {
+    cursor: pointer;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
 #disclaimer {
-    width: 50%;
     margin-left: auto;
     margin-right: auto;
     font-size: smaller;
     color: #555;
+    float: none;
 }
 
 #legalNotice {
@@ -50,6 +61,7 @@
     text-align: left;
     float: left;
     color: #555;
+    padding: 0px;
 }
 
 main .background {
@@ -58,10 +70,35 @@ main .background {
     filter: Alpha(opacity=10);
     left: 48%;
     top: -19%;
+    z-index: -1;
     -ms-transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
     transform: translate(-50%, 0);
+}
+
+.liberty {
+    color: rgb(44,188,155);
+}
+
+.libertyBG {
+    background-color: rgba(44,188,155,0.4);
+}
+
+.spy {
+    color: rgb(231,75,76);
+}
+
+.spyBG {
+    background-color: rgba(231,75,76,0.4);
+}
+
+.unknown {
+    color: rgb(79,79,140);
+}
+
+.unknownBG {
+    background-color: rgba(79,79,140,0.4);
 }
 
 .modal #repColor {
