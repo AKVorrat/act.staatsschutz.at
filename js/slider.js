@@ -216,7 +216,6 @@ function updateBullets() {
             }));
         }
     }
-    
 }
 
 function buildRepresentative(representative) {
