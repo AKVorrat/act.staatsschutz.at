@@ -211,8 +211,14 @@ function updateBullets() {
             $("#bullets").append($("<span></span>").html("&#9724;"));
         } else {
             $("#bullets").append($("<span></span>").html("&#9723;").click({ndx: i}, function (event) {
-                currentStep = event.data.ndx - 1;
-                slide(true);
+                if (currentStep < event.data.ndx) {
+                    currentStep = event.data.ndx - 1;
+                    slide(true);
+                } else {
+                    currentStep = event.data.ndx + 1;
+                    slide(false);
+                }
+                
             }));
         }
     }
