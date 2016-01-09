@@ -48,6 +48,9 @@
     display: none;
     left: 50%;
     top: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
 }
 
@@ -94,47 +97,145 @@
 }
 
 .slideForwards {
-    animation-name: slideForwards;
-    animation-duration: .6s;
+    -webkit-animation: slideForwards .6s;
+    -moz-animation: slideForwards .6s;
+    animation: slideForwards .6s;
 }
 
 @keyframes slideForwards {
     0% {
         opacity: 1;
+        -ms-transform: translate(0,0);
+        -webkit-transform: translate(0,0);
+        -moz-transform: translate(0,0);
         transform: translate(0,0);
     }
     50% {
         opacity: 0;
+        -ms-transform: translate(-100%,0);
+        -webkit-transform: translate(-100%,0);
+        -moz-transform: translate(-100%,0);
         transform: translate(-100%,0);
     }
     51% {
+        -ms-transform: translate(100%,0);
+        -webkit-transform: translate(100%,0);
+        -moz-transform: translate(100%,0);
         transform: translate(100%,0);
     }
     100% {
         opacity: 1;
+        -ms-transform: translate(0,0);
+        -webkit-transform: translate(0,0);
+        -moz-transform: translate(0,0);
         transform: translate(0,0);
     }
 }
 
+@-webkit-keyframes slideForwards {
+    0% {
+        opacity: 1;
+        -webkit-transform: translate(0,0);
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translate(-100%,0);
+    }
+    51% {
+        -webkit-transform: translate(100%,0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate(0,0);
+    }
+}
+
+@-moz-keyframes slideForwards {
+    0% {
+        opacity: 1;
+        -moz-transform: translate(0,0);
+    }
+    50% {
+        opacity: 0;
+        -moz-transform: translate(-100%,0);
+    }
+    51% {
+        -moz-transform: translate(100%,0);
+    }
+    100% {
+        opacity: 1;
+        -moz-transform: translate(0,0);
+    }
+}
+
 .slideBackwards {
-    animation-name: slideBackwards;
-    animation-duration: .6s;
+    -webkit-animation: slideBackwards .6s;
+    -moz-animation: slideBackwards .6s;
+    animation: slideBackwards .6s;
 }
 
 @keyframes slideBackwards {
     0% {
         opacity: 1;
+        -ms-transform: translate(0,0);
+        -webkit-transform: translate(0,0);
+        -moz-transform: translate(0,0);
         transform: translate(0,0);
     }
     50% {
         opacity: 0;
+        -ms-transform: translate(100%,0);
+        -webkit-transform: translate(100%,0);
+        -moz-transform: translate(100%,0);
         transform: translate(100%,0);
     }
     51% {
+        -ms-transform: translate(-100%,0);
+        -webkit-transform: translate(-100%,0);
+        -moz-transform: translate(-100%,0);
         transform: translate(-100%,0);
     }
     100% {
         opacity: 1;
+        -ms-transform: translate(0,0);
+        -webkit-transform: translate(0,0);
+        -moz-transform: translate(0,0);
         transform: translate(0,0);
+    }
+}
+
+@-webkit-keyframes slideBackwards {
+    0% {
+        opacity: 1;
+        -webkit-transform: translate(0,0);
+    }
+    50% {
+        opacity: 0;
+        -webkit-transform: translate(100%,0);
+    }
+    51% {
+        -webkit-transform: translate(-100%,0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: translate(0,0);
+    }
+}
+
+@-moz-keyframes slideBackwards {
+    0% {
+        opacity: 1;
+        -moz-transform: translate(0,0);
+    }
+    50% {
+        opacity: 0;
+        -moz-transform: translate(100%,0);
+    }
+    51% {
+        -moz-transform: translate(-100%,0);
+    }
+    100% {
+        opacity: 1;
+        -moz-transform: translate(0,0);
     }
 }
