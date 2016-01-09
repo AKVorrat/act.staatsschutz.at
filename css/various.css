@@ -58,7 +58,10 @@ main .background {
     filter: Alpha(opacity=10);
     left: 48%;
     top: -19%;
-    transform: translate(-50%,0);
+    -ms-transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
 }
 
 .modal #repColor {
@@ -76,6 +79,9 @@ main .background {
     position: absolute;
     top: 50%;
     left: 50%;
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+    -moz-transform: translate(-50%,-50%);
     transform: translate(-50%,-50%);
     width: 100%;
     -webkit-filter: blur(5px);
@@ -101,6 +107,9 @@ main .background {
     position: absolute;
     bottom: 18px;
     left: 50%;
+    -ms-transform: translate(-50%,50%);
+    -webkit-transform: translate(-50%,50%);
+    -moz-transform: translate(-50%,50%);
     transform: translate(-50%,50%);
     padding: 2px 5px;
     -moz-border-radius: 5px;
@@ -132,6 +141,10 @@ main .background {
     margin-bottom: 1em;
 }
 
+#contactButtons {
+    margin-bottom: 0.5em;
+}
+
 #contactButtons a,
 #contactLinks a {
     color: #EEE;
@@ -143,13 +156,13 @@ main .background {
     cursor: pointer;
 }
 
-#contactButtons div,
-#contactLinks div {
+#contactButtons .contactContainer,
+#contactLinks .contactContainer {
     font-size: larger;
     margin-bottom: 0.5em;
 }
 
-#contactButtons div {
+#contactButtons .contactContainer {
     padding: 0.3em 0.5em;
     border: 1px solid rgba(255, 255, 255, 0.5);
     display: inline-block;
@@ -158,10 +171,11 @@ main .background {
 .contactIcon {
     width: 25px;
     height: 25px;
-    margin: 0px 3px 0px -2px;
     background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
     display: inline-block;
-    border: none;
+    vertical-align: middle;
 }
 
 .contactIcon.mail {
