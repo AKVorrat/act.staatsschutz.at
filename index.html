@@ -65,17 +65,19 @@
                 <div class="row">
                     <div id="teamInput" class="btn-group" data-toggle="buttons">
                         <label class="btn btn-default">
-                            <input id="liberty" type="checkbox" autocomplete="off" /><span class="liberty">&FilledSmallSquare;</span> Team B&uuml;rgerrechte
+                            <input id="liberty" type="checkbox" autocomplete="off" /><span class="liberty glyph">&#9724;</span> Team B&uuml;rgerrechte
                         </label>
                         <label class="btn btn-default">
-                            <input id="spy" type="checkbox" autocomplete="off" /><span class="spy">&FilledSmallSquare;</span> Team &Uuml;berwachung
+                            <input id="spy" type="checkbox" autocomplete="off" /><span class="spy glyph">&#9724;</span> Team &Uuml;berwachung
                         </label>
                         <label class="btn btn-default">
-                            <input id="unknown" type="checkbox" autocomplete="off" /><span class="unknown">&FilledSmallSquare;</span> Unbekannt
+                            <input id="unknown" type="checkbox" autocomplete="off" /><span class="unknown glyph">&#9724;</span> Unbekannt
                         </label>
                     </div>
                 </div>
             </div>
+            
+            <div id="bullets" class="glyph hidden-xs hidden-sm"></div>
             
             <div id="slider">
                 <div id="slideLeft" class="slideSide disabled noSelect" onclick="slide(false)">&lang;</div>
@@ -86,7 +88,7 @@
                 <div id="slideRight" class="slideSide disabled noSelect" onclick="slide(true)">&rang;</div>
             </div>
 
-            <p id="disclaimer" class="text-center hidden-xs hidden-sm">Die Einsch&auml;tzung des Standpunktes der Abgeordneten f&uuml;r oder gegen das geplante Polizeiliche Staatsschutzgesetz basiert auf deren &ouml;ffentlichen Aussagen und dem Meinungsbild des Arbeitskreises Vorratsdaten &Ouml;sterreich. Sollten diese Angaben nicht zutreffen oder an Aktualit&auml;t verloren haben, nehmen Sie bitte Kontakt auf.
+            <p id="disclaimer" class="text-center col-xs-12 col-sm-8 col-md-6">Die Einsch&auml;tzung des Standpunktes der Abgeordneten f&uuml;r oder gegen das geplante Polizeiliche Staatsschutzgesetz basiert auf deren &ouml;ffentlichen Aussagen und dem Meinungsbild des Arbeitskreises Vorratsdaten &Ouml;sterreich. Sollten diese Angaben nicht zutreffen oder an Aktualit&auml;t verloren haben, nehmen Sie bitte Kontakt auf.
             <p class="text-center"><a href="https://akvorrat.at/kontakt">Kontakt / Impressum / Presse / Datenschutz</a></p>
         </main>
         
@@ -121,7 +123,7 @@
                         <div id="repColor">
                             <img class="img-responsive center-block austria" src="./img/austria.gif" alt="Österreich" />
                         </div>
-                        <h2 class="modal-title text-center"></h2>
+                        <h2 class="modal-title text-center">Representative Name</h2>
                         <img id="repImg" class="img-responsive center-block" src="./img/representatives/none.gif" alt="Niemand" />
                         <div id="teamSign"></div>
                     </div>
@@ -162,7 +164,7 @@
                         <p id="contactAnnotation" class="text-center">Du hast von diesem Abgeordneten eine Rückmeldung bekommen oder gar seine Meinung geändert? Dann <a href="mailto:office@akvorrat.at?subject=act.staatsschutz.at">teile uns das bitte mit</a>.</p>
                     </div>
                     <div class="modal-footer">
-                        <span id="legalNotice">Portrait &copy; Parlamentsdirektion / PHOTO SIMONIS</span>
+                        <span id="legalNotice" class="col-xs-6">Portrait &copy; Parlamentsdirektion / PHOTO SIMONIS</span>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Schlie&szlig;en</button>
                     </div>
                 </div>

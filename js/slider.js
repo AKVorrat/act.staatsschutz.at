@@ -203,6 +203,22 @@ function bend(x, len) {
     return x;
 }
 
+function updateBullets() {
+    $("#bullets").empty();
+    
+    for (var i = 0; i < steps.length; i++) {
+        if (steps.indexOf(steps[i]) == currentStep) {
+            $("#bullets").append($("<span></span>").html("&#9724;"));
+        } else {
+            $("#bullets").append($("<span></span>").html("&#9723;").click({ndx: i}, function (event) {
+                currentStep = event.data.ndx - 1;
+                slide(true);
+            }));
+        }
+    }
+    
+}
+
 function buildRepresentative(representative) {
     if (!representative)
         return;
@@ -241,6 +257,7 @@ function slide(direction) {
 
         setTimeout(function () {
             updateSlider(direction);
+            updateBullets();
             blocked = checkBlocked();
         }, 300);
     }

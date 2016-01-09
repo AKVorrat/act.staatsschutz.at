@@ -80,3 +80,7 @@ p:last-of-type {
     user-select: none;
     cursor: default;
 }
+
+.glyph {
+    font-family: "Segoe UI Symbol", sans-serif;
+}
