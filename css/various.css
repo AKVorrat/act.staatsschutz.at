@@ -2,7 +2,7 @@
     text-align: center;
 }
 
-#settings .row:first-of-type {
+#settings .row {
     margin-bottom: 1em;
 }
 
@@ -35,6 +35,54 @@
     background: -moz-linear-gradient(top, rgba(0,39,51,1) 0%, rgba(0,78,102,1) 50%, rgba(0,117,153,1) 51%, rgba(0,78,102,1) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(0,39,51,1) 0%, rgba(0,78,102,1) 50%, rgba(0,117,153,1) 51%, rgba(0,78,102,1) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, rgba(0,39,51,1) 0%, rgba(0,78,102,1) 50%, rgba(0,117,153,1) 51%, rgba(0,78,102,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+#searchForm {
+    position: relative;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1em;
+    padding-right: 4em;
+    background-color: #333;
+    -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
+    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+#searchInput {
+    position: relative;
+    width: 100%;
+    height: 2.5em;
+    background-color: rgba(0, 0, 0, 0);
+    border: none;
+    outline: none;
+}
+
+#searchForm .button {
+    position: absolute;
+    width: 2em;
+    top: 0;
+    bottom: 0;
+    left: auto;
+    margin: 3px;
+    border: none;
+    outline: none;
+    border-radius: 4px;
+}
+
+#searchButton {
+    font-weight: bold;
+    right: 0em;
+    background-color: #003b4c;
+}
+
+#searchClear {
+    right: 2em;
+    color: rgba(238, 238, 238, 0.7);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 #bullets {
