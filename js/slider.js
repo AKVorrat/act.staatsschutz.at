@@ -109,6 +109,7 @@ $(document).ready(function () {
         $slideLeft.removeClass("disabled");
         $slideRight.removeClass("disabled");
         updateRepresentatives();
+        currentStep = randomizeStep();
         slide(true);
     });
 });
@@ -139,6 +140,11 @@ function updateRepresentatives() {
     console.log("There are", filteredRepresentatives.length, "representatives in the search result now.");
     console.log("Using steps", steps.join(", "));
     return changed;
+}
+
+function randomizeStep() {
+    btw = Math.floor(Math.random() * steps.length);
+    return btw;
 }
 
 function emptySearch(dict) {

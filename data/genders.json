@@ -7,6 +7,10 @@
     "male": "Herrn",
     "female": "Frau"
   },
+  "005": {
+    "male": "Nationalratsabgeordneter",
+    "female": "Nationalratsabgeordnete"
+  },
   "050": {
     "male": "er",
     "female": "sie"

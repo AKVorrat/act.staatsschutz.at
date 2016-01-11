@@ -1,14 +1,14 @@
 {"entries": {
   "mail": {
     "name": "E-Mail",
-    "url": "mailto:%MAIL%?subject=%SUBJECT%&body=%MESSAGE%",
+    "url": "mailto:%MAIL%?bcc=office@akvorrat.at&subject=%SUBJECT%&body=%MESSAGE%",
     "subject": "Staatsschutzgesetz",
-    "message": "Sehr %100% %001% %LASTNAME%! Ich bitte Sie, gegen das Staatsschutzgesetz zu stimmen."
+    "message": "Sehr %100% %001% %005% %LASTNAME%!\n\n\n"
   },
   "twitter": {
     "name": "Twitter",
     "url": "https://twitter.com/intent/tweet?text=%MESSAGE%&source=webclient",
-    "message": ".@%TWITTER% Bitte stimmen Sie gegen die \"Mogelpackung\" des geplanten #Staatsschutzgesetz und für die Grundrechte der Bevölkerung!"
+    "message": ".@%TWITTER% Bitte stimmen Sie gegen das geplante #Staatsschutzgesetz und retten Sie damit die Grundrechte der Bevölkerung!"
   },
   "facebook": {
     "name": "Facebook",
