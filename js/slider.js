@@ -305,7 +305,7 @@ function build_modal_dialog (event) {
         $formMail.find("span").text(representative.mail);
     } else if (parties[representative.party].mail) {
         $formMail.removeClass("hidden");
-        $formMail.attr("href", "mailto:" + parties[representative.party].mail);
+        $formMail.attr("href", format.mail.url.replace("%MAIL%", parties[representative.party].mail).replace("%SUBJECT%", encodeURIComponent(jsonResolve(format.mail.subject, representative))).replace("%MESSAGE%", encodeURIComponent(jsonResolve(format.mail.message, representative))));
         $formMail.find("span").text(parties[representative.party].mail);
     } else {
         $formMail.addClass("hidden");
