@@ -2,7 +2,7 @@
   "mail": {
     "name": "E-Mail",
     "url": "mailto:%MAIL%?bcc=office@akvorrat.at&subject=%SUBJECT%&body=%MESSAGE%",
-    "subject": "Staatsschutzgesetz",
+    "subject": "",
     "message": "Sehr %100% %001% %005% %LASTNAME%!\n\n\n"
   },
   "twitter": {
