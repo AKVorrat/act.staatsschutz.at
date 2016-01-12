@@ -41,8 +41,8 @@ function jsonResolve(target, representative) {
     return str;
 }
 
-function adaptSearch() {
-    changed = updateRepresentatives();
+function adaptSearch(method) {
+    changed = updateRepresentatives(method);
     if (changed) {
         currentStep = -1;
         slide(true);
@@ -52,13 +52,42 @@ function adaptSearch() {
 function setListeners() {
     $("#partyInput :checkbox").change(function () {
         searchParties[$(this).attr("id")] = !searchParties[$(this).attr("id")];
-        adaptSearch();
+        adaptSearch({
+            "method": "settings"
+        });
     });
     $("#teamInput :checkbox").change(function () {
         searchTeams[$(this).attr("id")] = !searchTeams[$(this).attr("id")];
-        adaptSearch();
+        adaptSearch({
+            "method": "settings"
+        });
     });
     $("#contactModal").on("show.bs.modal", build_modal_dialog);
+    $("#searchInput").keyup(function () {
+        if ($(this).val().length < 1) {
+            $("#searchClear").addClass("hidden");
+        } else {
+            $("#searchClear").removeClass("hidden");
+            autocompleteSearch($("#searchClear").val());
+        }
+    });
+    $("#searchButton").click(function () {
+        adaptSearch({
+            "method": "keyword",
+            "keyword": $("#searchInput").val()
+        });
+    });
+    $("#searchClear").click(function () {
+        $("#searchInput").val("");
+        $("#searchClear").addClass("hidden");
+        adaptSearch({
+            "method": "settings"
+        });
+    });
+}
+
+function autocompleteSearch () {
+    
 }
 
 function getMPimg (representative, inArray) {
@@ -108,19 +137,21 @@ $(document).ready(function () {
         blocked = false;
         $slideLeft.removeClass("disabled");
         $slideRight.removeClass("disabled");
-        updateRepresentatives();
+        updateRepresentatives({
+            "method": "settings"
+        });
         currentStep = randomizeStep();
         slide(true);
     });
 });
 
-function updateRepresentatives() {
+function updateRepresentatives (method) {
     changed = false;
     cachedRepresentatives = [];
     steps = [];
 
     for (var i = 0; i < representatives.length; i++) {
-        if (matchSettings(representatives[i])) {
+        if (matchSearch(representatives[i], method)) {
             cachedRepresentatives.push(representatives[i]);
             if (filteredRepresentatives.indexOf(representatives[i]) == -1) {
                 changed = true;
@@ -147,19 +178,29 @@ function randomizeStep() {
     return btw;
 }
 
-function emptySearch(dict) {
+function emptySearch (dict) {
     var r = true;
     for (entry in dict)
         r = r && ! dict[entry];
     return r;
 }
 
-function matchSettings(representative) {
-    return (emptySearch(searchParties) || searchParties[representative.party]) &&
+function matchSearch (representative, method) {
+    rtrn = false;
+    if (method.method == "settings") {
+        rtrn = (emptySearch(searchParties) || searchParties[representative.party]) &&
            (emptySearch(searchTeams) || searchTeams[representative.team]);
+    } else if (method.method == "keyword") {
+        if ((representative.firstname + " " + representative.lastname).toLowerCase().indexOf(method.keyword.toLowerCase()) >= 0) {
+            rtrn = true;
+        } else if ((representative.lastname + " " + representative.firstname).toLowerCase().indexOf(method.keyword.toLowerCase()) >= 0) {
+            rtrn = true;
+        }
+    }
+    return rtrn;
 }
 
-function checkBlocked() {
+function checkBlocked () {
     var len = filteredRepresentatives.length;
     if (len <= 0) {
         $slideContent.text("Kein zutreffendes Suchergebnis gefunden.");
