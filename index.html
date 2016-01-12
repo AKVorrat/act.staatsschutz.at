@@ -79,14 +79,14 @@
                 <div class="row hidden">
                     <div id="searchForm">
                         <input id="searchInput" type="text" value="" placeholder="Suche..." />
-                        <input id="searchClear" class="button glyph" type="button" value="&#9747;" />
+                        <input id="searchClear" class="button glyph hidden" type="button" value="&#9747;" />
                         <input id="searchButton" class="button glyph" type="button" value="&rarr;" />
                         <div id="searchAutocomplete"></div>
                     </div>
                 </div>
             </div>
             
-            <div id="bullets" class="glyph hidden-xs hidden-sm"></div>
+            <div id="bullets" class="noSelect glyph hidden-xs hidden-sm"></div>
             
             <div id="slider">
                 <div id="slideLeft" class="slideSide disabled noSelect" onclick="slide(false)">&lang;</div>
@@ -99,7 +99,7 @@
             </div>
 
             <p id="disclaimer" class="text-center col-xs-12 col-sm-8 col-md-6">Die Einsch&auml;tzung des Standpunktes der Abgeordneten f&uuml;r oder gegen das geplante Polizeiliche Staatsschutzgesetz basiert auf deren &ouml;ffentlichen Aussagen und dem Meinungsbild des Arbeitskreises Vorratsdaten &Ouml;sterreich. Sollten diese Angaben nicht zutreffen oder an Aktualit&auml;t verloren haben, nehmen Sie bitte Kontakt auf.
-            <p class="text-center"><a href="https://akvorrat.at/kontakt#page-title">Kontakt</a> &#124; <a href="https://akvorrat.at/kontakt">Impressum</a> &#124; <a href="https://akvorrat.at/kontakt">Presse</a> &#124; <a href="https://akvorrat.at/kontakt#datenschutz">Datenschutz</a></p>
+            <p class="text-center"><a href="https://akvorrat.at/kontakt#page-title">Kontakt</a> &#124; <a href="https://akvorrat.at/kontakt">Impressum</a> &#124; <a href="https://akvorrat.at/kontakt">Presse</a> &#124; <a href="https://akvorrat.at/kontakt#datenschutz">Datenschutz</a><br /><a href="https://act.staatsschutz.at/data/representatives.csv">Rohdaten der Abgeordneten (CSV)</a> &#124; <a href="https://github.com/AKVorrat/act.staatsschutz.at">Quellcode dieser Webseite</a></p>
         </main>
         
         <footer class="container-fluid">
@@ -123,7 +123,6 @@
                 </div>
             </div>
             <p><a href="https://akvorrat.at/kontakt">Kontaktieren Sie uns, wenn Ihre Organisation die Aktion auch unterst&uuml;tzen m&ouml;chte.</a></p>
-            <p><a href="https://act.staatsschutz.at/data/representatives.csv">Rohdaten der Abgeordneten (CSV)</a> &#124; <a href="https://github.com/AKVorrat/act.staatsschutz.at">Quellcode dieser Webseite</a></p>
         </footer>
         
         <!--START contactModal-->
