@@ -52,7 +52,6 @@
     border-width: 1px;
     border-style: solid;
     border-radius: 4px;
-    overflow: hidden;
 }
 
 #searchInput {
@@ -77,6 +76,8 @@
 #searchButton {
     font-weight: bold;
     right: 0em;
+    margin: 3px;
+    border-radius: 4px;
     background-color: #003b4c;
 }
 
@@ -84,6 +85,30 @@
     right: 2em;
     color: rgba(238, 238, 238, 0.7);
     background-color: rgba(0, 0, 0, 0);
+}
+
+#searchAutocomplete {
+    position: absolute;
+    z-index: 150;
+    background: #111;
+    top: 36px;
+    left: 0px;
+    right: 0px;
+}
+
+#searchAutocomplete table {
+    width: 100%;
+}
+
+#searchAutocomplete tr {
+    text-align: left;
+    display: block;
+    cursor: pointer;
+    padding: 3px 10px;
+}
+
+#searchAutocomplete tr:hover {
+    background-color: #003b4c;
 }
 
 #bullets {
@@ -118,7 +143,7 @@ main .background {
     opacity: 0.1;
     filter: Alpha(opacity=10);
     left: 48%;
-    top: -19%;
+    top: -80px;
     z-index: -1;
     -ms-transform: translate(-50%, 0);
     -webkit-transform: translate(-50%, 0);

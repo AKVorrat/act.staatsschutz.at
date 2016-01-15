@@ -1,7 +1,7 @@
 var searchParties = {"spoe": false, "oevp": false, "fpoe": false, "gruene": false, "neos": false, "frank": false, "none": false};
 var searchTeams = {"liberty": false, "spy": false, "unknown": false};
 var representatives, format, parties, teams, genders;
-var blocked = true;
+var blocked = true, autocompleteSearchHovered = false;
 var filteredRepresentatives = [], steps = [], currentStep = -1;
 var jsonRepresentatives = "./data/representatives.json";
 var jsonFormat = "./data/format.json";
@@ -11,109 +11,6 @@ var jsonGenders = "./data/genders.json";
 var imgPath = "./img/representatives/";
 var packageSize, imgWidth = 137.15;
 var image_fake = false;
-
-function findElements() {
-    $slideContent = $("#slideContent");
-    $slideLeft = $("#slideLeft");
-    $slideRight = $("#slideRight");
-}
-
-function calculatePackageSize() {
-    var $virtual, columnWidth, rowSize, screenWidth;
-    columnWidth = $slideContent.width();
-    rowSize = Math.floor(columnWidth / imgWidth);
-    screenWidth = $(window).width();
-    
-    if (screenWidth >= 992)
-        packageSize = 2 * rowSize;
-    else
-        packageSize = rowSize;
-}
-
-function jsonResolve(target, representative) {
-    var str = target;
-    for (var sub in representative) {
-        str = str.replace(new RegExp("%" + sub.toUpperCase() + "%", 'g'), representative[sub]);
-    }
-    for (var sub in genders) {
-        str = str.replace(new RegExp("%" + sub + "%", 'g'), genders[sub][representative.gender]);
-    }
-    return str;
-}
-
-function adaptSearch(method) {
-    changed = updateRepresentatives(method);
-    if (changed) {
-        currentStep = -1;
-        slide(true);
-    }
-}
-
-function setListeners() {
-    $("#partyInput :checkbox").change(function () {
-        searchParties[$(this).attr("id")] = !searchParties[$(this).attr("id")];
-        adaptSearch({
-            "method": "settings"
-        });
-    });
-    $("#teamInput :checkbox").change(function () {
-        searchTeams[$(this).attr("id")] = !searchTeams[$(this).attr("id")];
-        adaptSearch({
-            "method": "settings"
-        });
-    });
-    $("#contactModal").on("show.bs.modal", build_modal_dialog);
-    $("#searchInput").keyup(function () {
-        if ($(this).val().length < 1) {
-            $("#searchClear").addClass("hidden");
-        } else {
-            $("#searchClear").removeClass("hidden");
-            autocompleteSearch($("#searchClear").val());
-        }
-    });
-    $("#searchButton").click(function () {
-        adaptSearch({
-            "method": "keyword",
-            "keyword": $("#searchInput").val()
-        });
-    });
-    $("#searchClear").click(function () {
-        $("#searchInput").val("");
-        $("#searchClear").addClass("hidden");
-        adaptSearch({
-            "method": "settings"
-        });
-    });
-}
-
-function autocompleteSearch () {
-    
-}
-
-function getMPimg (representative, inArray) {
-    if (typeof image_fake !== 'undefined' && image_fake) {
-        return imgPath + "none.gif";
-    } else {
-        return imgPath + 'small/' + inArray + ".jpg";    
-    }
-}
-
-function getMPname (representative) {
-    MPname = [
-        (representative.honorific_prefix || ''),
-        (representative.firstname || ''),
-        (representative.lastname || '')
-    ];
-    MPname = MPname.join(' ').trim();
-    if (representative.honorific_suffix) {
-        MPname += ', ' + representative.honorific_suffix;
-    }
-    return MPname;
-}
-
-function requestJSON(file, task) {
-    return $.getJSON(file, task);
-}
 
 $(document).ready(function () {
     findElements();
@@ -145,6 +42,157 @@ $(document).ready(function () {
     });
 });
 
+function findElements () {
+    $slideContent = $("#slideContent");
+    $slideLeft = $("#slideLeft");
+    $slideRight = $("#slideRight");
+}
+
+function calculatePackageSize () {
+    var $virtual, columnWidth, rowSize, screenWidth;
+    columnWidth = $slideContent.width();
+    rowSize = Math.floor(columnWidth / imgWidth);
+    screenWidth = $(window).width();
+    
+    if (screenWidth >= 992)
+        packageSize = 2 * rowSize;
+    else
+        packageSize = rowSize;
+}
+
+function jsonResolve (target, representative) {
+    var str = target;
+    for (var sub in representative) {
+        str = str.replace(new RegExp("%" + sub.toUpperCase() + "%", "g"), representative[sub]);
+    }
+    for (var sub in genders) {
+        str = str.replace(new RegExp("%" + sub + "%", "g"), genders[sub][representative.gender]);
+    }
+    return str;
+}
+
+function adaptSearch (method) {
+    changed = updateRepresentatives(method);
+    if (changed) {
+        currentStep = -1;
+        slide(true);
+    }
+}
+
+function setListeners () {
+    $("#partyInput :checkbox").change(function () {
+        searchParties[$(this).attr("id")] = !searchParties[$(this).attr("id")];
+        adaptSearch({
+            "method": "settings"
+        });
+    });
+    $("#teamInput :checkbox").change(function () {
+        searchTeams[$(this).attr("id")] = !searchTeams[$(this).attr("id")];
+        adaptSearch({
+            "method": "settings"
+        });
+    });
+    $("#searchInput").keyup(function (event) {
+        if ($(this).val().length < 1) {
+            $("#searchClear").addClass("hidden");
+            $("#searchAutocomplete").addClass("hidden");
+            $("#searchAutocomplete").find("table").empty();
+        } else if (event.keyCode == 13) {
+            $("#searchClear").removeClass("hidden");
+            $("#searchAutocomplete").addClass("hidden");
+            adaptSearch({
+                "method": "keyword",
+                "keyword": $(this).val()
+            });
+        } else {
+            $("#searchClear").removeClass("hidden");
+            $("#searchAutocomplete").removeClass("hidden");
+            autocompleteSearch($(this).val());
+        }
+    });
+    $("#searchInput").focusout(function () {
+        if (!autocompleteSearchHovered) {
+            $("#searchAutocomplete").addClass("hidden");
+        }
+    });
+    $("#searchInput").focusin(function () {
+        $("#searchAutocomplete").removeClass("hidden");
+    });
+    $("#searchAutocomplete").hover(
+        function () {
+            autocompleteSearchHovered = true;
+        }, 
+        function () {
+            autocompleteSearchHovered = false;
+        }
+    );
+    $("#searchButton").click(function () {
+        adaptSearch({
+            "method": "keyword",
+            "keyword": $("#searchInput").val()
+        });
+    });
+    $("#searchClear").click(function () {
+        $("#searchInput").val("");
+        $("#searchClear").addClass("hidden");
+        $("#searchAutocomplete").addClass("hidden");
+        $("#searchAutocomplete").find("table").empty();
+        adaptSearch({
+            "method": "settings"
+        });
+    });
+}
+
+function autocompleteSearch (keyword) {
+    $table = $("#searchAutocomplete").find("table");
+    $tr = $("<tbody></tbody>");
+    
+    for (var i = 0, j = 0; i < representatives.length && j < 5; i++) {
+        representative = representatives[i];
+        name = representative.firstname + " " + representative.lastname;
+        if (name.search(new RegExp(keyword, "i")) >= 0) {
+            text = $("<div></div>").html(name.replace(new RegExp(keyword, "ig"), function (match) {
+                return "<strong>" + match + "</strong>";
+            })).html();
+            $tr.append($("<tr></tr>").html(text)
+                .attr("data-representative", i)
+                .click({ndx: i}, function (event) {
+                    buildModal($("#contactModal"), event.data.ndx);
+                    $("#contactModal").modal("show");
+                    $("#searchAutocomplete").addClass("hidden");
+                }));
+            j++;
+        }
+    }
+    
+    $table.html($tr);
+}
+
+function getMPimg (representative, index) {
+    if (typeof image_fake !== 'undefined' && image_fake) {
+        return imgPath + "none.gif";
+    } else {
+        return imgPath + 'small/' + index + ".jpg";    
+    }
+}
+
+function getMPname (representative) {
+    MPname = [
+        (representative.honorific_prefix || ''),
+        (representative.firstname || ''),
+        (representative.lastname || '')
+    ];
+    MPname = MPname.join(' ').trim();
+    if (representative.honorific_suffix) {
+        MPname += ', ' + representative.honorific_suffix;
+    }
+    return MPname;
+}
+
+function requestJSON (file, task) {
+    return $.getJSON(file, task);
+}
+
 function updateRepresentatives (method) {
     changed = false;
     cachedRepresentatives = [];
@@ -153,10 +201,10 @@ function updateRepresentatives (method) {
     for (var i = 0; i < representatives.length; i++) {
         if (matchSearch(representatives[i], method)) {
             cachedRepresentatives.push(representatives[i]);
-            if (filteredRepresentatives.indexOf(representatives[i]) == -1) {
+            if (filteredRepresentatives.indexOf(representatives[i]) < 0) {
                 changed = true;
             }
-        } else if (filteredRepresentatives.indexOf(representatives[i]) != -1) {
+        } else if (filteredRepresentatives.indexOf(representatives[i]) >= 0) {
             changed = true;
         }
     }
@@ -173,7 +221,7 @@ function updateRepresentatives (method) {
     return changed;
 }
 
-function randomizeStep() {
+function randomizeStep () {
     btw = Math.floor(Math.random() * steps.length);
     return btw;
 }
@@ -212,7 +260,7 @@ function checkBlocked () {
     }
 }
 
-function setDisabled(value) {
+function setDisabled (value) {
     if (value) {
         $slideLeft.addClass("disabled");
         $slideRight.addClass("disabled");
@@ -222,7 +270,7 @@ function setDisabled(value) {
     }
 }
 
-function updateSlider(direction) {
+function updateSlider (direction) {
     var len = filteredRepresentatives.length;
     $slideContent.empty();
     
@@ -237,12 +285,14 @@ function updateSlider(direction) {
     
     for (var i = 0; i < goForward; i++) {
         var representative = filteredRepresentatives[steps[currentStep] + i];
-        var builtRepresentative = buildRepresentative(representative);
-        $slideContent.append(builtRepresentative);
+        if (representative) {
+            var builtRepresentative = buildRepresentative(representative);
+            $slideContent.append(builtRepresentative);
+        }
     }
 }
 
-function bend(x, len) {
+function bend (x, len) {
     if (x > len - 1)
         x = x % len;
     while (x < 0)
@@ -250,7 +300,7 @@ function bend(x, len) {
     return x;
 }
 
-function updateBullets() {
+function updateBullets () {
     $("#bullets").empty();
     
     for (var i = 0; i < steps.length; i++) {
@@ -265,33 +315,12 @@ function updateBullets() {
                     currentStep = event.data.ndx + 1;
                     slide(false);
                 }
-                
             }));
         }
     }
 }
 
-function buildRepresentative(representative) {
-    if (!representative)
-        return;
-    
-    var div, img, inArray;
-    
-    inArray = representatives.indexOf(representative);
-    MPimg = getMPimg(representative, inArray);
-    
-    div = $("<div></div>").attr("class", "repBox");
-    div.html($("<a></a>").attr("href", "").attr("data-toggle", "modal").attr("data-target", "#contactModal").attr("data-representative", inArray)
-            .append($("<div></div>").attr("class", "colorBox " + representative.team + "BG")));
-    div.append($("<div></div>").attr("class", "detailsBox")
-            .append($("<p></p>").attr("class", "name").text(representative.lastname))
-            .append($("<p></p>").attr("class", "party").text(parties[representative.party].short)));
-    div.append($("<img />").attr("class", "repImg").attr("src", MPimg).attr("alt", representative.lastname));
-    div.append($("<button></button>").attr("type", "button").attr("class", "btn btn-default btn-md").attr("data-representative", inArray).attr("data-toggle", "modal").attr("data-target", "#contactModal").text("Kontakt"));
-    return div;
-}
-
-function slide(direction) {
+function slide (direction) {
     if (blocked) {
         blocked = checkBlocked();
     }
@@ -315,28 +344,56 @@ function slide(direction) {
     }
 }
 
-function build_modal_dialog (event) {
-    var button = $(event.relatedTarget);
-    var representative = button.data("representative");
-    representative = representatives[representative];
-    var modal = $(this);
+function buildRepresentative (representative) {
+    index = representatives.indexOf(representative);
+    MPimg = getMPimg(representative, index);
+    
+    div = $("<div></div>").attr("class", "repBox");
+    div.html($("<div></div>")
+        .attr("class", "colorBox " + representative.team + "BG")
+        .click({ndx: index}, function (event) {
+            buildModal($("#contactModal"), event.data.ndx);
+            $("#contactModal").modal("show");
+        }));
+    div.append($("<div></div>")
+        .attr("class", "detailsBox")
+        .append($("<p></p>").attr("class", "name")
+            .text(representative.lastname))
+        .append($("<p></p>").attr("class", "party")
+            .text(parties[representative.party].short)));
+    div.append($("<img />")
+        .attr("class", "repImg")
+        .attr("src", MPimg)
+        .attr("alt", representative.lastname));
+    div.append($("<button></button>")
+        .attr("type", "button")
+        .attr("class", "btn btn-default btn-md")
+        .text("Kontakt")
+        .click({ndx: index}, function (event) {
+            buildModal($("#contactModal"), event.data.ndx);
+            $("#contactModal").modal("show");
+        }));
+    
+    return div;
+}
+
+function buildModal (modal, index) {
+    representative = representatives[index];
     var $contactButtons = $("#contactButtons");
     var MPimg, MPname;
-        
-    inArray = representatives.indexOf(representative);
-    MPimg = getMPimg(representative, inArray);
+    
+    MPimg = getMPimg(representative, index);
     MPname = getMPname(representative);
     
     $("#repColor").attr("class", representative.team + "BG");
     modal.find(".modal-header h2").text(MPname);
     $("#repImg").attr("src", MPimg)
-                .attr("style", "border-color: " + teams[representative.team].color + ";");
+        .attr("style", "border-color: " + teams[representative.team].color + ";");
     $("#teamSign").text(teams[representative.team].name)
-                  .attr("style", "background: " + teams[representative.team].color + ";");
+        .attr("style", "background: " + teams[representative.team].color + ";");
     $("#introduction").text(jsonResolve(teams[representative.team].introduction, representative) + " ");
     $("#todo").text(jsonResolve(teams[representative.team].todo, representative))
-              .attr("class", representative.team);
-    
+        .attr("class", representative.team);
     $("#legalNotice").html("Portrait &copy; " + representative.copyright);
     
     $formMail = modal.find("#formMail").parent();
