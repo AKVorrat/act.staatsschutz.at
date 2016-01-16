@@ -32,6 +32,7 @@ $(document).ready(function () {
     requestJSON(jsonRepresentatives, function (passRepresentatives) {
         representatives = passRepresentatives;
         blocked = false;
+        setupChart();
         $slideLeft.removeClass("disabled");
         $slideRight.removeClass("disabled");
         updateRepresentatives({
@@ -58,6 +59,55 @@ function calculatePackageSize () {
         packageSize = 2 * rowSize;
     else
         packageSize = rowSize;
+}
+
+function setupChart () {
+    var distribution = [["liberty", 0], ["spy", 0], ["unknown", 0]];
+    
+    for (var i = 0; i < representatives.length; i++) {
+        var representative = representatives[i];
+        if (representative.team == "liberty") {
+            distribution[0][1] = distribution[0][1] + 1;
+        } else if (representative.team == "spy") {
+            distribution[1][1] = distribution[1][1] + 1;
+        } else if (representative.team == "unknown") {
+            distribution[2][1] = distribution[2][1] + 1;
+        } else {
+            console.log("what");
+        }
+    }
+    
+    var plot = $.jqplot ('chart', [distribution], 
+    {
+        animate: false,
+        seriesColors: ["#2CBC9B", "#E74B4C", "#4F4F8C"],
+        seriesDefaults: {
+            shadow: false,
+            renderer: $.jqplot.PieRenderer, 
+            rendererOptions: {
+                diameter: 300,
+                startAngle: 180, 
+                sliceMargin: 10, 
+                showDataLabels: true
+            }
+        },
+        title: {
+            text: '',
+            show: false,
+        },
+        grid: {
+            drawGridLines: false,
+            background: "transparent",
+            borderWidth: 0,
+            shadow: false
+        },
+        gridPadding: {
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0
+        }
+    });
 }
 
 function jsonResolve (target, representative) {
