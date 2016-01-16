@@ -8,14 +8,17 @@
         <meta name="author" content="Arbeitskreis Vorratsdaten Österreich" />
         <meta name="description" content="Contact Your Representative!" />
         <link rel="stylesheet" type="text/css" href="./css/bootstrap-3.3.6.min.css" />
+        <link rel="stylesheet" type="text/css" href="./css/jquery.jqplot-1.0.8.min.css" />
         <link rel="stylesheet" type="text/css" href="./css/style.css" />
         <link rel="stylesheet" type="text/css" href="./css/various.css" />
         <link rel="stylesheet" type="text/css" href="./css/slider.css" />
         <link rel="stylesheet" type="text/css" href="./css/parties.css" />
         <link rel="icon" href="./favicon.ico" />
-        <script type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="./js/bootstrap-3.3.6.min.js"></script>
-        <script type="text/javascript" src="./js/slider.js"></script>
+        <script language="javascript" type="text/javascript" src="./js/jquery-2.1.4.min.js"></script>
+        <script language="javascript" type="text/javascript" src="./js/jquery.jqplot-1.0.8.min.js"></script>
+        <script language="javascript" type="text/javascript" src="./js/jqplot.pieRenderer-1.0.8.min.js"></script>
+        <script language="javascript" type="text/javascript" src="./js/bootstrap-3.3.6.min.js"></script>
+        <script language="javascript" type="text/javascript" src="./js/slider.js"></script>
         <title>Kontaktiere Deine Abgeordneten: Stoppt das Staatsschutzgesetz!</title>
     </head>
 
@@ -76,7 +79,7 @@
                     </div>
                 </div>
                 
-                <div class="row">
+                <div class="row hidden">
                     <div id="searchForm">
                         <input id="searchInput" type="text" value="" placeholder="Suche..." autocomplete="off" />
                         <input id="searchClear" class="button glyph hidden" type="button" value="&#9747;" />
@@ -99,6 +102,11 @@
                 </div>
                 <div id="slideRight" class="slideSide disabled noSelect" onclick="slide(true)">&rang;</div>
             </div>
+            
+            <section class="hidden">
+                <h3>Statistik</h3>
+                <div id="chart"></div>
+            </section>
 
             <p id="disclaimer" class="text-center col-xs-12 col-sm-8 col-md-6">Die Einsch&auml;tzung des Standpunktes der Abgeordneten f&uuml;r oder gegen das geplante Polizeiliche Staatsschutzgesetz basiert auf deren &ouml;ffentlichen Aussagen und dem Meinungsbild des Arbeitskreises Vorratsdaten &Ouml;sterreich. Sollten diese Angaben nicht zutreffen oder an Aktualit&auml;t verloren haben, nehmen Sie bitte Kontakt auf.
             <p class="text-center"><a href="https://akvorrat.at/kontakt#page-title">Kontakt</a> &#124; <a href="https://akvorrat.at/kontakt">Impressum</a> &#124; <a href="https://akvorrat.at/kontakt">Presse</a> &#124; <a href="https://akvorrat.at/kontakt#datenschutz">Datenschutz</a><br /><a href="https://act.staatsschutz.at/data/representatives.csv">Rohdaten der Abgeordneten (CSV)</a> &#124; <a href="https://github.com/AKVorrat/act.staatsschutz.at">Quellcode dieser Webseite</a></p>

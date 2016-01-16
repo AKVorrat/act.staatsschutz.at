@@ -122,6 +122,13 @@
     margin-right: 2px;
 }
 
+#chart {
+    margin: 1em 0px;
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+}
+
 #disclaimer {
     margin-left: auto;
     margin-right: auto;
