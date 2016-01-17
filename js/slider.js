@@ -201,15 +201,6 @@ function setListeners () {
             "keyword": $("#searchInput").val()
         });
     });
-    $("#searchClear").click(function () {
-        $("#searchInput").val("");
-        $("#searchClear").addClass("hidden");
-        $("#searchAutocomplete").addClass("hidden");
-        $("#searchAutocomplete").find("table").empty();
-        adaptSearch({
-            "method": "settings"
-        });
-    });
 }
 
 function autocompleteSearch (keyword) {

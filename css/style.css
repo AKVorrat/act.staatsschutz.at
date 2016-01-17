@@ -27,9 +27,30 @@ body {
 
 section {
     position: relative;
-    padding: 7em 20% 5em;
+    padding: 7em 2em 5em;
     width: 100%;
     overflow: auto;
+}
+
+@media screen and (min-width: 768px) {
+    section {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    section {
+        padding-left: 8%;
+        padding-right: 8%;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    section {
+        padding-left: 20%;
+        padding-right: 20%;
+    }
 }
 
 section:first-of-type {
