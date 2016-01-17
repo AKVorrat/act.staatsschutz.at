@@ -62,37 +62,52 @@ function calculatePackageSize () {
 }
 
 function setupChart () {
-    var distribution = [["liberty", 0], ["spy", 0], ["unknown", 0]];
+    var distributionTotal = [["liberty", 0], ["spy", 0], ["unknown", 0]];
+    var distributionSpoe = [["liberty", 0], ["spy", 0], ["unknown", 0]];
+    var distributionOevp = [["liberty", 0], ["spy", 0], ["unknown", 0]];
     
     for (var i = 0; i < representatives.length; i++) {
         var representative = representatives[i];
         if (representative.team == "liberty") {
-            distribution[0][1] = distribution[0][1] + 1;
+            distributionTotal[0][1] = distributionTotal[0][1] + 1;
+            if (representative.party == "spoe") {
+                distributionSpoe[0][1] = distributionSpoe[0][1] + 1;
+            } else if (representative.party == "oevp") {
+                distributionOevp[0][1] = distributionOevp[0][1] + 1;
+            }
         } else if (representative.team == "spy") {
-            distribution[1][1] = distribution[1][1] + 1;
+            distributionTotal[1][1] = distributionTotal[1][1] + 1;
+            if (representative.party == "spoe") {
+                distributionSpoe[1][1] = distributionSpoe[1][1] + 1;
+            } else if (representative.party == "oevp") {
+                distributionOevp[1][1] = distributionOevp[1][1] + 1;
+            }
         } else if (representative.team == "unknown") {
-            distribution[2][1] = distribution[2][1] + 1;
-        } else {
-            console.log("what");
+            distributionTotal[2][1] = distributionTotal[2][1] + 1;
+            if (representative.party == "spoe") {
+                distributionSpoe[2][1] = distributionSpoe[2][1] + 1;
+            } else if (representative.party == "oevp") {
+                distributionOevp[2][1] = distributionOevp[2][1] + 1;
+            }
         }
     }
     
-    var plot = $.jqplot ('chart', [distribution], 
-    {
+    var settings = {
         animate: false,
         seriesColors: ["#2CBC9B", "#E74B4C", "#4F4F8C"],
         seriesDefaults: {
             shadow: false,
             renderer: $.jqplot.PieRenderer, 
             rendererOptions: {
-                diameter: 300,
+                diameter: 290,
                 startAngle: 180, 
-                sliceMargin: 10, 
-                showDataLabels: true
+                sliceMargin: 5, 
+                showDataLabels: true,
+            	dataLabels: "value",
             }
         },
         title: {
-            text: '',
+            text: "",
             show: false,
         },
         grid: {
@@ -107,7 +122,11 @@ function setupChart () {
             left: 0,
             right: 0
         }
-    });
+    };
+    
+    var plotTotal = $.jqplot ("chartTotal", [distributionTotal], settings);
+    var plotSpoe = $.jqplot ("chartSpoe", [distributionSpoe], settings);
+    var plotOevp = $.jqplot ("chartOevp", [distributionOevp], settings);
 }
 
 function jsonResolve (target, representative) {

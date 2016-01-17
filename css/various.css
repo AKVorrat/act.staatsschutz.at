@@ -1,3 +1,17 @@
+.numbered {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70px;
+    height: 70px;
+    font-size: 40px;
+    color: #fff;
+    line-height: 70px;
+    text-align: center;
+    background: #003b4c;
+    border-radius: 35px;
+}
+
 #settings {
     text-align: center;
 }
@@ -6,92 +20,21 @@
     margin-bottom: 1em;
 }
 
-#settings .btn {
-    background: -moz-linear-gradient(top, rgba(51,51,51,1) 0%, rgba(73,73,73,1) 50%, rgba(51,51,51,1) 51%, rgba(22,22,22,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(51,51,51,1) 0%,rgba(73,73,73,1) 50%,rgba(51,51,51,1) 51%,rgba(22,22,22,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(51,51,51,1) 0%,rgba(73,73,73,1) 50%,rgba(51,51,51,1) 51%,rgba(22,22,22,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    border-color: rgba(255, 255, 255, 0.4);
-}
-
-#settings .btn:hover {
-    -moz-box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
-    -webkit-box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
-    box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
-}
-
-#settings .btn:not(.active):hover {
-    background: -moz-linear-gradient(top, rgba(22,22,22,1) 0%, rgba(51,51,51,1) 50%, rgba(73,73,73,1) 51%, rgba(51,51,51,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(22,22,22,1) 0%, rgba(51,51,51,1) 50%, rgba(73,73,73,1) 51%, rgba(51,51,51,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(22,22,22,1) 0%, rgba(51,51,51,1) 50%, rgba(73,73,73,1) 51%, rgba(51,51,51,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-}
-
 #settings .btn.active {
-    background: -moz-linear-gradient(top, rgba(0,78,102,1) 0%, rgba(0,117,153,1) 50%, rgba(0,78,102,1) 51%, rgba(0,39,51,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(0,78,102,1) 0%,rgba(0,117,153,1) 50%,rgba(0,78,102,1) 51%,rgba(0,39,51,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(0,78,102,1) 0%,rgba(0,117,153,1) 50%,rgba(0,78,102,1) 51%,rgba(0,39,51,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    color: #fff;
+    background: #003b4c;
 }
 
 #settings .btn.active:hover {
-    background: -moz-linear-gradient(top, rgba(0,39,51,1) 0%, rgba(0,78,102,1) 50%, rgba(0,117,153,1) 51%, rgba(0,78,102,1) 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(0,39,51,1) 0%, rgba(0,78,102,1) 50%, rgba(0,117,153,1) 51%, rgba(0,78,102,1) 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(0,39,51,1) 0%, rgba(0,78,102,1) 50%, rgba(0,117,153,1) 51%, rgba(0,78,102,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-}
-
-#searchForm {
-    position: relative;
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1em;
-    padding-right: 4em;
-    background-color: #333;
-    -moz-box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
-    -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 1);
-    border-color: rgba(255, 255, 255, 0.4);
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 4px;
-}
-
-#searchInput {
-    position: relative;
-    width: 100%;
-    height: 2.5em;
-    background-color: rgba(0, 0, 0, 0);
-    border: none;
-    outline: none;
-}
-
-#searchForm .button {
-    position: absolute;
-    width: 2em;
-    top: 0;
-    bottom: 0;
-    left: auto;
-    border: none;
-    outline: none;
-}
-
-#searchButton {
-    font-weight: bold;
-    right: 0em;
-    margin: 3px;
-    border-radius: 4px;
-    background-color: #003b4c;
-}
-
-#searchClear {
-    right: 2em;
-    color: rgba(238, 238, 238, 0.7);
-    background-color: rgba(0, 0, 0, 0);
+    color: #fff;
+    background: #005972;
 }
 
 #searchAutocomplete {
     position: absolute;
     z-index: 150;
-    background: #111;
-    top: 36px;
+    background: #fff;
+    top: 34px;
     left: 0px;
     right: 0px;
 }
@@ -108,10 +51,12 @@
 }
 
 #searchAutocomplete tr:hover {
+    color: #fff;
     background-color: #003b4c;
 }
 
 #bullets {
+    color: rgba(0,0,0,0.4);
     text-align: center;
     margin-top: 1em;
 }
@@ -122,19 +67,14 @@
     margin-right: 2px;
 }
 
-#chart {
-    margin: 1em 0px;
-    color: inherit;
-    font-family: inherit;
-    font-size: inherit;
-}
-
-#disclaimer {
+.chart {
+    color: #fff;
+    height: 300px;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
-    font-size: smaller;
-    color: #555;
-    float: none;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 #legalNotice {
@@ -143,19 +83,6 @@
     float: left;
     color: #555;
     padding: 0px;
-}
-
-main .background {
-    position: absolute;
-    opacity: 0.1;
-    filter: Alpha(opacity=10);
-    left: 48%;
-    top: -80px;
-    z-index: -1;
-    -ms-transform: translate(-50%, 0);
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    transform: translate(-50%, 0);
 }
 
 .liberty {
@@ -180,6 +107,21 @@ main .background {
 
 .unknownBG {
     background-color: rgba(79,79,140,0.4);
+}
+
+.modal-content {
+    background-color: #111;
+    overflow: hidden;
+    color: #fff;
+}
+
+.modal-header {
+    border: none;
+}
+
+.modal-backdrop.in {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
 }
 
 .modal #repColor {
@@ -357,6 +299,7 @@ main .background {
 #contactAnnotation {
     font-size: smaller;
     width: 60%;
+    color: #555;
     margin-left: auto;
     margin-right: auto;
 }

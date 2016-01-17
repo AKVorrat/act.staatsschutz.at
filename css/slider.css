@@ -85,11 +85,12 @@
     vertical-align: middle;
     font-size: 3em;
     width: 10%;
+    color: rgba(0,0,0,0.4);
 }
 
 .slideSide:hover:not(.disabled) {
     font-size: 3.5em;
-    text-shadow: 0px 0px 5px #FFF;
+    text-shadow: 0px 0px 4px rgba(0,0,0,0.4);
 }
 
 .slideSide.disabled {
