@@ -12,10 +12,6 @@
     border-radius: 35px;
 }
 
-#settings {
-    text-align: center;
-}
-
 #settings .row {
     margin-bottom: 1em;
 }
@@ -37,6 +33,11 @@
     top: 34px;
     left: 0px;
     right: 0px;
+    margin: 0px 15px;
+    border-color: #CCC;
+    border-width: 1px;
+    border-style: solid;
+    border-top: none;
 }
 
 #searchAutocomplete table {
@@ -59,6 +60,7 @@
     color: rgba(0,0,0,0.4);
     text-align: center;
     margin-top: 1em;
+    overflow: hidden;
 }
 
 #bullets span {
