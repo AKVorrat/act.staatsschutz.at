@@ -85,7 +85,7 @@
     vertical-align: middle;
     font-size: 3em;
     width: 10%;
-    color: rgba(0,0,0,0.4);
+    color: rgba(0,0,0,0.3);
 }
 
 .slideSide:hover:not(.disabled) {

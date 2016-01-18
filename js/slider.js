@@ -163,18 +163,15 @@ function setListeners () {
     });
     $("#searchInput").keyup(function (event) {
         if ($(this).val().length < 1) {
-            $("#searchClear").addClass("hidden");
             $("#searchAutocomplete").addClass("hidden");
             $("#searchAutocomplete").find("table").empty();
         } else if (event.keyCode == 13) {
-            $("#searchClear").removeClass("hidden");
             $("#searchAutocomplete").addClass("hidden");
             adaptSearch({
                 "method": "keyword",
                 "keyword": $(this).val()
             });
         } else {
-            $("#searchClear").removeClass("hidden");
             $("#searchAutocomplete").removeClass("hidden");
             autocompleteSearch($(this).val());
         }
