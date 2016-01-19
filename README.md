@@ -19,5 +19,6 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 # Includes
-
-- jqPlot (C) 2009-2015 by Chris Leonello
+- Bootstrap (C) 2011-2016 Twitter, Inc.
+- jqPlot (C) 2009-2016 Chris Leonello
+- jQuery Core (C) 2005-2016 jQuery Foundation, Inc.
