@@ -300,7 +300,7 @@
 
 #contactAnnotation {
     font-size: smaller;
-    width: 60%;
+    float: none;
     color: #555;
     margin-left: auto;
     margin-right: auto;
