@@ -184,6 +184,13 @@ function setListeners () {
     $("#searchInput").focusin(function () {
         $("#searchAutocomplete").removeClass("hidden");
     });
+    $("#searchInput").on("input", function (event) {
+        if (!$(this).val().trim()) {
+            adaptSearch({
+                "method": "settings"
+            });
+        }
+    });
     $("#searchAutocomplete").hover(
         function () {
             autocompleteSearchHovered = true;
