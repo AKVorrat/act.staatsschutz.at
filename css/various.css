@@ -111,25 +111,14 @@
     background-color: rgba(79,79,140,0.4);
 }
 
-.act .modal-content {
+.modal-content {
     background-color: #111;
     overflow: hidden;
     color: #fff;
 }
 
-.act .modal-header {
+.modal-header {
     border: none;
-}
-
-.act .modal .modal-title {
-    margin: 0px 0px 15px;
-    position: relative;
-    text-shadow: 0 0 10px #111;
-}
-
-.act .modal p {
-    text-align: center;
-    font-size: larger;
 }
 
 .modal-backdrop.in {
@@ -188,6 +177,17 @@
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     border-radius: 5px;
+}
+
+.modal .modal-title {
+    margin: 0px 0px 15px;
+    position: relative;
+    text-shadow: 0 0 10px #111;
+}
+
+.modal p {
+    text-align: center;
+    font-size: larger;
 }
 
 .modal form {
