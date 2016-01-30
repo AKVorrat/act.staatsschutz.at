@@ -10,7 +10,7 @@ var jsonTeams = "./data/teams.json";
 var jsonGenders = "./data/genders.json";
 var imgPath = "./img/representatives/";
 var packageSize, imgWidth = 137.15;
-var image_fake = false;
+var image_fake = false, active = false;
 
 $(document).ready(function () {
     findElements();
@@ -127,6 +127,8 @@ function setupChart () {
     var plotTotal = $.jqplot ("chartTotal", [distributionTotal], settings);
     var plotSpoe = $.jqplot ("chartSpoe", [distributionSpoe], settings);
     var plotOevp = $.jqplot ("chartOevp", [distributionOevp], settings);
+    
+    var plotTemp = $.jqplot ("chartTemp", [[["liberty", 59], ["spy", 91], ["unknown", 33]]], settings);
 }
 
 function jsonResolve (target, representative) {
@@ -218,13 +220,22 @@ function autocompleteSearch (keyword) {
             text = $("<div></div>").html(name.replace(new RegExp(keyword, "ig"), function (match) {
                 return "<strong>" + match + "</strong>";
             })).html();
-            $tr.append($("<tr></tr>").html(text)
+            cmptlTR = $("<tr></tr>").html(text)
                 .attr("data-representative", i)
                 .click({ndx: i}, function (event) {
-                    buildModal($("#contactModal"), event.data.ndx);
-                    $("#contactModal").modal("show");
-                    $("#searchAutocomplete").addClass("hidden");
-                }));
+                    if (active) {
+                        buildModal($("#contactModal"), event.data.ndx);
+                        $("#contactModal").modal("show");
+                        $("#searchAutocomplete").addClass("hidden");
+                    }
+                });
+            
+            if(!active) {
+                cmptlTR = $("<del></del>").html(cmptlTR);
+            }
+            
+            $tr.append(cmptlTR);
+            
             j++;
         }
     }
@@ -416,8 +427,10 @@ function buildRepresentative (representative) {
     div.html($("<div></div>")
         .attr("class", "colorBox " + representative.team + "BG")
         .click({ndx: index}, function (event) {
-            buildModal($("#contactModal"), event.data.ndx);
-            $("#contactModal").modal("show");
+            if (active) {
+                buildModal($("#contactModal"), event.data.ndx);
+                $("#contactModal").modal("show");
+            }
         }));
     div.append($("<div></div>")
         .attr("class", "detailsBox")
@@ -429,14 +442,22 @@ function buildRepresentative (representative) {
         .attr("class", "repImg")
         .attr("src", MPimg)
         .attr("alt", representative.lastname));
-    div.append($("<button></button>")
+    cBtn = $("<button></button>")
         .attr("type", "button")
         .attr("class", "btn btn-default btn-md")
         .text("Kontakt")
         .click({ndx: index}, function (event) {
-            buildModal($("#contactModal"), event.data.ndx);
-            $("#contactModal").modal("show");
-        }));
+            if (active) {
+                buildModal($("#contactModal"), event.data.ndx);
+                $("#contactModal").modal("show");
+            }
+        });
+    
+    if(!active) {
+        cBtn.attr("disabled", "disabled");
+    }
+    
+    div.append(cBtn);
     
     return div;
 }
