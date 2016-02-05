@@ -127,8 +127,6 @@ function setupChart () {
     var plotTotal = $.jqplot ("chartTotal", [distributionTotal], settings);
     var plotSpoe = $.jqplot ("chartSpoe", [distributionSpoe], settings);
     var plotOevp = $.jqplot ("chartOevp", [distributionOevp], settings);
-    
-    var plotTemp = $.jqplot ("chartTemp", [[["liberty", 59], ["spy", 91], ["unknown", 33]]], settings);
 }
 
 function jsonResolve (target, representative) {
