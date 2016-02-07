@@ -12,7 +12,7 @@
     "todo": "Hilf mit, %051% umzustimmen!"
   },
   "unknown": {
-    "name": "Unbekanntes Team",
+    "name": "Team Enthaltung",
     "color": "#2E2E50",
     "introduction": "%001% %LASTNAME% hat sich zum Staatsschutzgesetz noch nicht geäußert, während andere das Ruder in die Hand nehmen.",
     "todo": "Hilf mit, %051% zu einer Festlegung zu bewegen!"
